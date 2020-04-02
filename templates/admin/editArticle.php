@@ -1,7 +1,7 @@
 <?php include "templates/include/header.php" ?>
 
       <div id="adminHeader">
-        <h2>Widget News Admin</h2>
+        <h2>Admin</h2>
         <p>You are logged in as <b><?php echo htmlspecialchars( $_SESSION['username']) ?></b>. <a href="admin.php?action=logout"?>Log out</a></p>
       </div>
 
@@ -22,18 +22,13 @@
           </li>
 
           <li>
-            <label for="summary">Article Summary</label>
-            <textarea name="summary" id="summary" placeholder="Brief description of the article" required maxlength="1000" style="height: 5em;"><?php echo htmlspecialchars( $results['article']->summary )?></textarea>
-          </li>
-
-          <li>
             <label for="content">Article Content</label>
             <textarea name="content" id="content" placeholder="The HTML content of the article" required maxlength="100000" style="height: 30em;"><?php echo htmlspecialchars( $results['article']->content )?></textarea>
           </li>
 
           <li>
             <label for="publicationDate">Publication Date</label>
-            <input type="date" name="publicationDate" id="publicationDate" placeholder="YYYY-MM-DD" required maxlength="10" value="<?php echo $results['article']->publicationDate ? date( "Y-m-d", $results['article']->publicationDate ) : "" ?>" />
+            <input type="datetime" name="publicationDate" id="publicationDate" placeholder="YYYY년 MM월 DD일 " required maxlength="19" value="<?php echo $results['article']->pub_date ? date( "y m d H:i:s", $results['article']->publicationDate ) : "" ?>" />
           </li>
 
 
