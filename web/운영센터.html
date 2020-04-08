@@ -15,21 +15,21 @@
         .logo_image { width:300px; height:100px;}
 
         /* 상단 nav */
-        #nav {
+        #nav { /*전체 스타일 메뉴*/
             list-style:none;
             height:40px;
             padding:5px 1px;
             margin:0;
             background:#6f71db;
         }
-        #nav li{
-            float:left;
-            position:relative;
+        #nav li{ /*전체 메뉴의 리스트에 대한 스타일*/
+            float:left; /*메뉴를 왼쪽부터 표시*/
+            position:relative; /*순서대로 표시*/
             margin:0 30px;
             padding:5px 0;
         }
-        #nav li a{
-            display: block;
+        #nav li a{ /*메인 메뉴 링크의 스타일*/
+            display: block;/*메뉴칸을 블록레벨로 만듬*/
             font-family: "굴림";
             font-size: 18px;
             padding: 7px 8px;
@@ -43,52 +43,52 @@
             text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);      
         }
         #nav li:hover > a{
-            
-            color:blank;
+            z-index: 1;
+            color: black;
             margin: 0;
             padding: 5px;
         }
-        #nav ul li{
-            float: none;
+        #nav ul li{/*서브메뉴 리스트들의 스타일*/
+            float: none;/*부모요소의 떠있는 속성을 해제하여 세로로 표시되도록 한다.*/
             margin: 0;
             width:200px;
             padding: 0;
-            font-size: 10px;
+            font-size: 10px;/*폰트10px*/
         }
-        #nav ul a{
-            font-weight:normal;
-            color:black;
+        #nav ul a{/*서브메뉴 리스트의 링크 스타일*/
+            font-weight:normal;/*글자 굵기 보통으로 지정*/
+            color:black; /*글자색 검정색으로 지정*/
         }
-        #nav li:hover a{
-           
-            font-weight: bold;
+        #nav ul li:hover a{/*서브메뉴 리스트로 마우스 포인터를 올렸을 때의 스타일*/
+        color: blue; /*글자색 지정*/
+            font-weight: 900;/*글자 굵기 지정*/
         }
-        #nav ul{
-            list-style:none;
+        #nav ul{ /*서브메뉴 스타일*/
+            list-style:none; /*불릿 없음으로 만듬*/
             margin: 0;
             padding:0;
-            position: absolute;
-            left:0;
-            top: 40px;
-            width: 105px;
+            position: absolute;/*고정 위치에 표시*/
+            left:0; /*부모 요소와 왼쪽 좌표값을 같게한다.*/
+            top: 40px;/*부모 요소로부터 45px 아래에 표시*/
+            width: 105px; /*서브메뉴의 너비*/
           
-            text-align: center;
+            text-align: center; /*글자 가운데 정렬*/
+            /*opacity: 0;*/
             display: none;
-
         }
-        #nav li:hover ul{
-            display: block;
-           
+        #nav li:hover ul{/*메인 메뉴에 마우스 포인터를 가져갔을 때 서브메뉴 스타일*/
+            /*opacity: 1;*/
+           display:block;
         }
-        #nav li:hover ul li{
-            height: 35px;
-            overflow: visible;
+        #nav li:hover ul li{/*마우스 포인터를 올려놨을 때 서브메뉴 스타일*/
+        z-index:5;
+            height: 35px;/*서브메뉴의 높이*/
+            overflow: visible;/*영역을 넘어가는 내용이 있다면 표시*/
             padding: 0;
-            
         }
 
         /* 하단 전체를 감싸는 태그 */
-        .main{ margin-top:150px; width: 1420px; display: grid; grid-template-columns: 300px 1fr; }
+        .main{ width: 1420px; display: grid; grid-template-columns: 300px 1fr; }
 
         /* 아이디/비밀번호 */
         .aside legend{ margin-top: 20px; border: 1px solid black; }
@@ -116,6 +116,27 @@
         .search{ clear:both; margin-left:150px;}
         .search ul li{ float:left; width:100px; border: 1px solid black;  }
     </style>
+  <style media="screen">
+    ul,li{list-style:none;}
+    .slide{width:1420px;height:300px;overflow:hidden;margin:0 auto;padding:0;}
+    .slide ul{margin:0 auto;padding:0;width:calc(100% * 4);display:flex;animation:slide 8s infinite;} /* slide를 8초동안 진행하며 무한반복 함 */
+    .slide li{width:calc(100% / 4);height:300px;}
+    
+    @keyframes slide {
+      0% {margin-left:0;} /* 0 ~ 10  : 정지 */
+      10% {margin-left:0;} /* 10 ~ 25 : 변이 */
+      25% {margin-left:-100%;} /* 25 ~ 35 : 정지 */
+      35% {margin-left:-100%;} /* 35 ~ 50 : 변이 */
+      50% {margin-left:-200%;}
+      60% {margin-left:-200%;}
+      75% {margin-left:-300%;}
+      85% {margin-left:-300%;}
+      100% {margin-left:0;}
+    }
+</style>
+
+
+
 </head>
 <body>
 
@@ -163,6 +184,19 @@
             </li>
         </ul>
     </div>
+    <div class="slide">
+        <!-- <img id="back" src="img/back.png" alt="" width="100"> -->
+        <ul>
+          <li><img src="img/name1.png" alt="" width="1420" height="300"></li>
+          <li><img src="img/name2.png" alt="" width="1420" height="300"></li>
+          <li><img src="img/name3.png" alt="" width="1420" height="300"></li>
+          <li><img src="img/name4.png" alt="" width="1420" height="300"></li>
+          <li><img src="img/name5.png" alt="" width="1420" height="300"></li>
+        </ul>
+        <!-- <img id="next" src="img/next.png" alt="" width="100"> -->
+      </div>
+
+
 
     <div class="main">
 
@@ -268,7 +302,7 @@
 
         <!-- 검색/글작성 버튼 -->
         <button class="search_button">검색</button>
-        <button class="create_article">글 작성</button>
+        <button class="create_article" onClick="location.href='test.html'">글 작성</button>
 
 
         <!-- 페이지 검색-->
