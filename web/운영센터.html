@@ -25,8 +25,8 @@
         #nav li{ /*전체 메뉴의 리스트에 대한 스타일*/
             float:left; /*메뉴를 왼쪽부터 표시*/
             position:relative; /*순서대로 표시*/
-            margin:0 30px;
-            padding:5px 0;
+            margin:0 30px -5px 30px;
+            padding:5px 0 10px 0;
         }
         #nav li a{ /*메인 메뉴 링크의 스타일*/
             display: block;/*메뉴칸을 블록레벨로 만듬*/
@@ -118,9 +118,9 @@
     </style>
   <style media="screen">
     ul,li{list-style:none;}
-    .slide{width:1420px;height:300px;overflow:hidden;margin:0 auto;padding:0;}
+    .slide{width:1420px;height:200px;overflow:hidden;margin:0 auto;padding:0;}
     .slide ul{margin:0 auto;padding:0;width:calc(100% * 4);display:flex;animation:slide 8s infinite;} /* slide를 8초동안 진행하며 무한반복 함 */
-    .slide li{width:calc(100% / 4);height:300px;}
+    .slide li{width:calc(100% / 4);height:200px;}
     
     @keyframes slide {
       0% {margin-left:0;} /* 0 ~ 10  : 정지 */
@@ -187,11 +187,11 @@
     <div class="slide">
         <!-- <img id="back" src="img/back.png" alt="" width="100"> -->
         <ul>
-          <li><img src="img/name1.png" alt="" width="1420" height="300"></li>
-          <li><img src="img/name2.png" alt="" width="1420" height="300"></li>
-          <li><img src="img/name3.png" alt="" width="1420" height="300"></li>
-          <li><img src="img/name4.png" alt="" width="1420" height="300"></li>
-          <li><img src="img/name5.png" alt="" width="1420" height="300"></li>
+          <li><img src="img/name1.png" alt="" width="1420" height="200"></li>
+          <li><img src="img/name2.png" alt="" width="1420" height="200"></li>
+          <li><img src="img/name3.png" alt="" width="1420" height="200"></li>
+          <li><img src="img/name4.png" alt="" width="1420" height="200"></li>
+          <li><img src="img/name5.png" alt="" width="1420" height="200"></li>
         </ul>
         <!-- <img id="next" src="img/next.png" alt="" width="100"> -->
       </div>
