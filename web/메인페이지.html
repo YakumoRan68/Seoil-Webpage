@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>main</title>
+    <style>
+        * { list-style-type: none; margin:0 auto;}
+
+        /* 상단 메뉴를 감싸는 태그 */
+        .header { margin:0 auto; width:1420px; text-align: center;}
+
+        /* 상단 로고 */
+        .logo_image { width:300px; height:100px;} 
+
+        /* 상단 nav */
+        #nav {
+            list-style:none;
+            height:40px;
+            padding:5px 1px;
+            margin:0;
+            background:#f29c74;
+        }
+        #nav li{
+            float:left;
+            position:relative;
+            margin:5px 30px;
+            padding:0;
+        }
+        #nav li a{
+            display: block;
+            font-family: "굴림";
+            font-size: 18px;
+            padding: 7px 8px;
+            margin: 0;
+            color: #fff;
+            margin: 0;
+            /* 상단메뉴 가로길이 */
+            width:200px;
+            text-align: center;
+            text-decoration: none;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);      
+        }
+        #nav li:hover > a{
+            background : #ffcab2;
+            color:blank;
+            margin: 0;
+            padding: 5px;
+        }
+        #nav ul li{
+            float: none;
+            margin: 0;
+            width:200px;
+            padding: 0;
+            font-size: 10px;
+        }
+        #nav ul a{
+            font-weight:normal;
+            color:black;
+        }
+        #nav li:hover a{
+            background :#cc9882;
+            font-weight: bold;
+        }
+        #nav ul{
+            list-style:none;
+            margin: 0;
+            padding:0;
+            position: absolute;
+            left:0;
+            top: 40px;
+            width: 105px;
+            
+            text-align: center;
+            opacity: 0;
+        }
+        #nav li:hover ul{
+            opacity: 1;
+        }
+        #nav li:hover ul li{
+            height: 35px;
+            overflow: visible;
+            padding: 0;
+        }
+
+        /* 중간 전체를 감싸는 태그 */
+        .main{ margin-top:150px; width: 1420px; display: grid; grid-template-columns: 300px 1fr; }
+
+        /* 아이디/비밀번호 -로그인 */
+        .aside legend{ margin-top: 20px; height: 120px; border: 1px solid black; }
+        .aside legend h3 { margin-top:5px; margin-left: 5px; }
+        .aside legend form { margin-top:3px; margin-left:5px; }
+        .aside legend a { margin-top:3px; margin-left:5px; color:black; }
+
+        /* 광고 이미지 */
+        .aside img{ margin-top: 20px; width:250px; height: 360px; }
+
+        /* 메인 내용 : 메인광고 + 미리보기 */
+        .main_contents{ width:1100px; display: block; /*text-align: center;*/ margin-top:20px; }
+
+        /* 메인 광고 */
+        .main_contents_nav { float:left; width:1082px; height:120px; border: 1px solid white; }
+        .main_contents_nav img { width:1082px; height: 120px; }
+
+        /* 메인 미리보기 글 목록 */
+        .main_contents_list{ float:left; width:1082px; height: 360px; border: 1px solid black;  margin-top: 20px; }
+
+        .left { float:left;  width:539px; height:360px; /*border-right: 1px solid black;*/  }
+        
+        .box1 { float:left;  width:539px; height:180px; /*border-bottom: 1px solid green;*/  }
+        .box1_title1 { float:left; margin-left:18.5px; width:500px; height:30px; border-bottom: 2px solid #838383; margin-top:5px; }
+        .box1_list1 { float:left; margin-left:18.5px; width:500px; height:130px; border: 1px solid #979797; margin-top:3px; display:block; }
+
+        /* ul li 설정 */
+        .list { padding:0;   }
+        .list li { line-height:22px; text-decoration:none; }
+        .list li a { color:#474747; }
+        .list li a:before { display:inline-block; font-size:30px; line-height:2px; content:"."; color:#474747; margin:0 3px 0 5px; }    
+        .txt { display:inline-block; }
+
+        .box2 { float:left;  width:539px; height:179px; /*border-top:1px solid red;*/ }
+        .box2_title2 { float:left; margin-left:18.5px; width:500px; height:30px; border-bottom: 2px solid #838383; margin-top:5px; }
+        .box2_list2 { float:left; margin-left:18.5px; width:500px; height:130px; border: 1px solid #979797; margin-top:3px; }
+        
+
+        .right { float:left; width:539px; height:360px; /*border-left: 1px solid black;*/  }
+
+        .box3 { float:left; width:542px; height:180px; /*border-bottom: 1px solid green;*/ }
+        .box3_title3 { float:left; margin-left:18.5px; width:503px; height:30px; border-bottom: 2px solid #838383; margin-top:5px; }
+        .box3_list3 { float:left; margin-left:18.5px; width:503px; height:130px; border: 1px solid #979797; margin-top:3px; }
+
+        .box4 { float:left; width:542px; height:179px; /*border-top:1px solid red;*/ }
+        .box4_title4 { float:left; margin-left:18.5px; width:503px; height:30px; border-bottom: 2px solid #838383; margin-top:5px; }
+        .box4_list4 { float:left; margin-left:18.5px; width:503px; height:130px; border: 1px solid #979797; margin-top:3px; }
+
+        /* 하단 전제를 감싸는 태그 */
+        .footer { margin-top: 50px; width: 1370px; padding-bottom: 45px; }
+
+        /* 하단 구분선 */
+        .footer-divider { border-top: 3px solid #a0a0a0; }
+
+        /* 하단 */
+        /*.footer-divider-nav { margin: 0; padding: 0; }*/
+        .footer-divider-nav ul { padding-top: 10px; text-align: center; margin: 0; }
+        .footer-divider-nav ul li { display: inline-block; border-right: 1px solid #838383; padding: 0px 11px; font-size: 13px;  }
+        .footer-divider-nav ul li a { text-decoration: none; color: #797979; /*padding: 0 10px;*/ }
+        .footer-divider-nav ul li:last-child{border-right:none;} /* 가장 왼쪽 구분선 삭제 */
+        .footer-f { margin: 8px 0; text-align: center; font-size: 12px; color: #797979; }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+    <img src="./서일.png" class="logo_image">
+
+    <ul id="nav">
+        <li><a href="#">커뮤니티</a>
+            <ul>
+                <li><a href="# ">자유게시판</a></li>
+                <li><a href="# ">익명게시판</a></li>
+                <li><a href="# ">새내기게시판</a></li>
+                <li><a href="# ">졸업생게시판</a></li>
+            </ul>
+            </li>
+
+            <li><a href="#">강의정보</a>
+            <ul>
+                <li><a href="# ">전공강의정보</a></li>
+                <li><a href="# ">교양강의 정보</a></li>
+                <li><a href="# ">교양강의자료</a></li>
+            </ul>
+            </li>
+
+            <li><a href="#">분실물</a>
+            <ul>
+                <li><a href="# ">분실신고</a></li>
+                <li><a href="# ">습득물</a></li>
+            </ul>
+            </li>
+
+            <li><a href="#">공지사항</a>
+                <ul>
+                    <li><a href="# ">학교소식</a></li>
+                    <li><a href="# ">학생소식</a></li>
+                    <li><a href="# ">서일동아리</a></li>
+                </ul>
+            </li>
+            <li><a href="#">운영센터</a>
+                <ul>
+                    <li><a href="# ">업데이트 공지</a></li>
+                    <li><a href="# ">게시판 신설건의</a></li>
+                    <li><a href="# ">문의사항</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main">
+
+    <!-- 사이드바 -->
+    <div class="aside">
+        <!-- 로그인 -->
+        <legend>
+            <h3>LOGIN</h3>
+            <form>
+                <input type="text" placeholder="아이디"><br/>
+                <input type="password" placeholder="비밀번호">
+                <input type="submit" value="로그인" /*style="height:50px;"*/ >
+            </form>
+            <a href="">회원가입</a>
+            <a href="">아이디/비밀번호 찾기</a>
+        </legend>
+
+        <!-- 하단 광고 이미지 -->
+        <img src="./배너.png">
+    </div>
+
+
+
+    <!-- 메인컨텐츠 -->
+    <section class="main_contents">
+        <!-- 메인컨텐츠 nav -->
+        <div class="main_contents_nav">
+            <img src="ss.jpg">
+        </div>
+
+        <!-- 메인컨텐츠 테이블 -->
+        <div class="main_contents_list">
+            <div class="left">
+                <div class="box1">
+                    <div class="box1_title1">
+                        <h3>공지사항</h3>
+                    </div>
+                    <div class="box1_list1">
+                        <ul class="list">
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box2">
+                    <div class="box2_title2">
+                        <h3>분실물</h3>
+                    </div>
+                    <div class="box2_list2">
+                        <ul class="list">
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right">
+                <div class="box3">
+                    <div class="box3_title3">
+                        <h3>자유게시판</h3>
+                    </div>
+                    <div class="box3_list3">
+                        <ul class="list">
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box4">
+                    <div class="box4_title4">
+                        <h3>문의사항</h3>
+                    </div>
+                    <div class="box4_list4">
+                        <ul class="list">
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                            <li><a href="#"><span class="txt">3월 30일부터 원격강의가 시작</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+        </div>    
+
+        
+        
+    </section>
+</div>
+
+<footer id="su-footer">
+<div class="footer">
+
+    <!-- 하단 선 -->
+    <div class="footer-divider"></div>
+    <!-- 하단 목록 -->
+    <div class="footer-divider-nav">
+        <ul>
+            <li><a href=#>HOME</a></li>
+            <li><a href=#>SU 소개</a></li>
+            <li><a href=#>이용문의</a></li>
+            <li><a href=#>개인보호정책</a></li>
+            <li><a href=#>이용약관</a></li>
+        </ul>
+    </div>
+    <p class="footer-f">copyright by seoil.com All rights reserved</p>
+
+</div>
+</footer>
+
+</body>
+</html>
