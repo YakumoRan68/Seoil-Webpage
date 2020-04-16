@@ -26,7 +26,7 @@ class Article {
     if ( isset( $data['article_id'] ) ) $this->article_id = (int) $data['article_id'];
     if ( isset( $data['author_id'] ) ) $this->author_id = (int) $data['author_id'];
     if ( isset( $data['category_id'] ) ) $this->category_id = (int) $data['category_id'];
-    if ( isset( $data['title'] ) ) $this->title = preg_replace ( $str_filter, "", $data['title'] );
+    if ( isset( $data['title'] ) ) $this->title = preg_replace ( "/[^\.\,\-\_\'\"\@\?\!\:\$ a-zA-Z0-9()]/", "", $data['title'] );
     if ( isset( $data['content'] ) ) $this->content = $data['content']; //TODO : Rich Text Editor
     if ( isset( $data['reg_date'] ) ) $this->reg_date = (int) $data['pub_date'];
     if ( isset( $data['pub_date'] ) ) $this->pub_date = (int) $data['pub_date'];
@@ -116,11 +116,10 @@ class Article {
 
     // Insert the Article
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $sql = "INSERT INTO articles ( pub_date, title, summary, content ) VALUES ( FROM_UNIXTIME(:pub_date), :title, :content )";
+    $sql = "INSERT INTO articles (title, content, pub_date ) VALUES (:title, ,:content, FROM_UNIXTIME(:pub_date))";
     $st = $conn->prepare ( $sql );
     $st->bindValue( ":pub_date", $this->pub_date, PDO::PARAM_INT );
     $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
-    //$st->bindValue( ":summary", $this->summary, PDO::PARAM_STR );
     $st->bindValue( ":content", $this->content, PDO::PARAM_STR );
     $st->execute();
     $this->article_id = $conn->lastInsertId();
@@ -142,7 +141,6 @@ class Article {
     $st = $conn->prepare ( $sql );
     $st->bindValue( ":pub_date", $this->pub_date, PDO::PARAM_INT );
     $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
-    //$st->bindValue( ":summary", $this->summary, PDO::PARAM_STR );
     $st->bindValue( ":content", $this->content, PDO::PARAM_STR );
     $st->bindValue( ":article_id", $this->article_id, PDO::PARAM_INT );
     $st->execute();

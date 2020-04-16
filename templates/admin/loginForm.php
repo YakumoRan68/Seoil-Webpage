@@ -10,15 +10,13 @@
         <ul>
 
           <li>
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" placeholder="Your admin username" required autofocus maxlength="20" />
+            <input type="text" name="username" id="username" placeholder="아이디" required autofocus maxlength="20" />
           </li>
 
           <li>
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Your admin password" required maxlength="20" />
+            <input type="password" name="password" id="password" placeholder="비밀번호" required maxlength="20" />
           </li>
-
+          <!--TODO : 아이디 저장-->
         </ul>
 
         <div class="buttons">

@@ -2,10 +2,10 @@
 
       <div id="adminHeader">
         <h2>Admin</h2>
-        <p>You are logged in as <b><?php echo htmlspecialchars( $_SESSION['username']) ?></b>. <a href="admin.php?action=logout"?>Log out</a></p>
+        <p><b><?php echo htmlspecialchars( $_SESSION['username']) ?></b>으로 로그인 하셨습니다. <a href="admin.php?action=logout"?>로그아웃</a></p>
       </div>
 
-      <h1>All Articles</h1>
+      <h1>모든 게시글</h1>
 
 <?php if ( isset( $results['errorMessage'] ) ) { ?>
         <div class="errorMessage"><?php echo $results['errorMessage'] ?></div>
@@ -18,14 +18,14 @@
 
       <table>
         <tr>
-          <th>Publication Date</th>
-          <th>Article</th>
+          <th>작성일</th>
+          <th>게시글</th>
         </tr>
 
 <?php foreach ( $results['articles'] as $article ) { ?>
 
-        <tr onclick="location='admin.php?action=editArticle&amp;articleId=<?php echo $article->id?>'">
-          <td><?php echo date('j M Y', $article->publicationDate)?></td>
+        <tr onclick="location='admin.php?action=editArticle&amp;articleId=<?php echo $article->article_id?>'">
+          <td><?php echo date("y m d H:i:s", $article->pub_date)?></td>
           <td>
             <?php echo $article->title?>
           </td>
@@ -35,8 +35,8 @@
 
       </table>
 
-      <p><?php echo $results['totalRows']?> article<?php echo ( $results['totalRows'] != 1 ) ? 's' : '' ?> in total.</p>
+      <p>총 <?php echo $results['totalRows']?> 개의 게시글<?php echo ( $results['totalRows'] != 1 ) ? '들' : '' ?>이 있습니다.</p>
 
-      <p><a href="admin.php?action=newArticle">Add a New Article</a></p>
+      <p><a href="admin.php?action=newArticle">게시글 작성</a></p>
 
 <?php include "templates/include/footer.php" ?>

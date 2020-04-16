@@ -3,7 +3,7 @@
     date_default_timezone_set( "Asia/Seoul" );  // http://www.php.net/manual/en/timezones.php
     define( "DB_DSN", "mysql:host=localhost;dbname=cms" );
     define( "DB_USERNAME", "seoil_db" );
-    define( "DB_PASSWORD", "egjScI4p1m2Al5eJ" );
+    define( "DB_PASSWORD", "VZXxmKXUH03T9Jmq" );
     define( "CLASS_PATH", "classes" );
     define( "TEMPLATE_PATH", "templates" );
     define( "HOMEPAGE_NUM_ARTICLES", 5 );

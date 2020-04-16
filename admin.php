@@ -11,23 +11,12 @@ if ( $action != "login" && $action != "logout" && !$username ) {
 }
 
 switch ( $action ) {
-  case 'login':
-    login();
-    break;
-  case 'logout':
-    logout();
-    break;
-  case 'newArticle':
-    newArticle();
-    break;
-  case 'editArticle':
-    editArticle();
-    break;
-  case 'deleteArticle':
-    deleteArticle();
-    break;
-  default:
-    listArticles();
+  case 'login': login(); break;
+  case 'logout': logout(); break;
+  case 'newArticle': newArticle(); break;
+  case 'editArticle': editArticle(); break;
+  case 'deleteArticle': deleteArticle(); break;
+  default : listArticles();
 }
 
 
@@ -146,15 +135,15 @@ function listArticles() {
   $data = Article::getList();
   $results['articles'] = $data['results'];
   $results['totalRows'] = $data['totalRows'];
-  $results['pageTitle'] = "All Articles";
+  $results['pageTitle'] = "모든 게시글";
 
   if ( isset( $_GET['error'] ) ) {
     if ( $_GET['error'] == "articleNotFound" ) $results['errorMessage'] = "Error: Article not found.";
   }
 
   if ( isset( $_GET['status'] ) ) {
-    if ( $_GET['status'] == "changesSaved" ) $results['statusMessage'] = "Your changes have been saved.";
-    if ( $_GET['status'] == "articleDeleted" ) $results['statusMessage'] = "Article deleted.";
+    if ( $_GET['status'] == "changesSaved" ) $results['statusMessage'] = "게시글이 저장되었습니다.";
+    if ( $_GET['status'] == "articleDeleted" ) $results['statusMessage'] = "게시글이 삭제되었습니다.";
   }
 
   require( TEMPLATE_PATH . "/admin/listArticles.php" );

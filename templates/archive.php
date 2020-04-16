@@ -8,17 +8,16 @@
 
         <li>
           <h2>
-            <span class="pubDate"><?php echo date('j F Y', $article->publicationDate)?></span><a href=".?action=viewArticle&amp;articleId=<?php echo $article->id?>"><?php echo htmlspecialchars( $article->title )?></a>
+            <span class="pubDate"><?php echo date("y m d H:i:s", $article->pub_date)?></span><a href=".?action=viewArticle&amp;articleId=<?php echo $article->article_id?>"><?php echo htmlspecialchars( $article->title )?></a>
           </h2>
-          <p class="summary"><?php echo htmlspecialchars( $article->summary )?></p>
         </li>
 
 <?php } ?>
 
       </ul>
 
-      <p><?php echo $results['totalRows']?> article<?php echo ( $results['totalRows'] != 1 ) ? 's' : '' ?> in total.</p>
+      <p>총 <?php echo $results['totalRows']?>개의 게시글<?php echo ( $results['totalRows'] != 1 ) ? '들' : '' ?>이 있습니다.</p>
 
-      <p><a href="./">Return to Homepage</a></p>
+      <p><a href="./">홈페이지로 돌아가기</a></p>
 
 <?php include "templates/include/footer.php" ?>
