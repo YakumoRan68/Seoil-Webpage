@@ -27,7 +27,7 @@
 
           <li>
             <label for="pub_date">작성일</label>
-            <input type="datetime" name="pub_date" id="pub_date" placeholder="YYYY년 MM월 DD일 " required maxlength="19" value="<?php echo $results['article']->pub_date ? date("y m d H:i:s", $results['article']->pub_date): "" ?>" />
+            <input type="datetime" name="pub_date" id="pub_date" placeholder="YYYY년 MM월 DD일 " required maxlength="19" value="<?php echo $results['article']->pub_date ? date("Y-m-d H:i:s", $results['article']->pub_date): date("Y-m-d H:i:s") ?>" />
           </li>
         </ul>
 

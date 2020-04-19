@@ -6,7 +6,7 @@
 
         <li>
           <h2>
-            <span class="pubDate"><?php echo date("m d H", $article->pub_date)?></span><a href=".?action=viewArticle&amp;articleId=<?php echo $article->article_id?>"><?php echo htmlspecialchars( $article->title )?></a>
+            <span class="pubDate"><?php echo date("m d H", $article->pub_date)?></span><a href=".?action=viewArticle&amp;articleId=<?php echo $article->article_id?>"><?php echo htmlspecialchars( $article->title)?></a>
           </h2>
         </li>
 

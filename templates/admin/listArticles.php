@@ -25,9 +25,13 @@
 <?php foreach ( $results['articles'] as $article ) { ?>
 
         <tr onclick="location='admin.php?action=editArticle&amp;articleId=<?php echo $article->article_id?>'">
-          <td><?php echo date("y m d H:i:s", $article->pub_date)?></td>
+          <td><?php 
+          error_log($article->pub_date);
+          echo date("Y-m-d H:i:s", $article->pub_date)
+          ?></td>
           <td>
-            <?php echo $article->title?>
+            <?php echo htmlspecialchars($article->title)?>
+            
           </td>
         </tr>
 

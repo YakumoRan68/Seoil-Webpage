@@ -26,9 +26,9 @@ class Article {
     if ( isset( $data['article_id'] ) ) $this->article_id = (int) $data['article_id'];
     if ( isset( $data['author_id'] ) ) $this->author_id = (int) $data['author_id'];
     if ( isset( $data['category_id'] ) ) $this->category_id = (int) $data['category_id'];
-    if ( isset( $data['title'] ) ) $this->title = preg_replace ( "/[^\.\,\-\_\'\"\@\?\!\:\$ a-zA-Z0-9()]/", "", $data['title'] );
+    if ( isset( $data['title'] ) ) $this->title = preg_replace('/[^\x{1100}-\x{11FF}\x{3130}-\x{318F}\x{AC00}-\x{D7AF}0-9a-zA-Z\s]/u', "", $data['title'] );
     if ( isset( $data['content'] ) ) $this->content = $data['content']; //TODO : Rich Text Editor
-    if ( isset( $data['reg_date'] ) ) $this->reg_date = (int) $data['pub_date'];
+    if ( isset( $data['reg_date'] ) ) $this->reg_date = (int) $data['reg_date'];
     if ( isset( $data['pub_date'] ) ) $this->pub_date = (int) $data['pub_date'];
     if ( isset( $data['views'] ) ) $this->views = (int) $data['views'];
   }
@@ -44,7 +44,7 @@ class Article {
 
     // Store all the parameters
     $this->__construct( $params );
-
+    /*
     // Parse and store the publication date
     if ( isset($params['pub_date']) ) {
       $pub_date = explode ( '-', $params['pub_date'] );
@@ -53,7 +53,7 @@ class Article {
         list ( $y, $m, $d ) = $pub_date;
         $this->pub_date = mktime ( 0, 0, 0, $m, $d, $y );
       }
-    }
+    }*/
   }
 
 
@@ -105,20 +105,15 @@ class Article {
     return ( array ( "results" => $list, "totalRows" => $totalRows[0] ) );
   }
 
-
-  /**
-  * Inserts the current Article object into the database, and sets its ID property.
-  */
-
   public function insert() {
 
     if ( !is_null( $this->article_id ) ) trigger_error ( "Article::insert(): Attempt to insert an Article object that already has its ID property set (to $this->article_id).", E_USER_ERROR );
 
     // Insert the Article
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $sql = "INSERT INTO articles (title, content, pub_date ) VALUES (:title, ,:content, FROM_UNIXTIME(:pub_date))";
+    $sql = "INSERT INTO articles (title, content, pub_date) VALUES (:title, :content, FROM_UNIXTIME(:pub_date))";
     $st = $conn->prepare ( $sql );
-    $st->bindValue( ":pub_date", $this->pub_date, PDO::PARAM_INT );
+    $st->bindValue( ":pub_date", strtotime($this->pub_date), PDO::PARAM_INT );
     $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
     $st->bindValue( ":content", $this->content, PDO::PARAM_STR );
     $st->execute();
@@ -137,9 +132,9 @@ class Article {
    
     // Update the Article
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $sql = "UPDATE articles SET pub_date=FROM_UNIXTIME(:pub_date), title=:title, summary=:summary, content=:content WHERE article_id = :article_id";
+    $sql = "UPDATE articles SET pub_date=FROM_UNIXTIME(:pub_date), title=:title, content=:content WHERE article_id = :article_id";
     $st = $conn->prepare ( $sql );
-    $st->bindValue( ":pub_date", $this->pub_date, PDO::PARAM_INT );
+    $st->bindValue( ":pub_date", strtotime($this->pub_date), PDO::PARAM_INT );
     $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
     $st->bindValue( ":content", $this->content, PDO::PARAM_STR );
     $st->bindValue( ":article_id", $this->article_id, PDO::PARAM_INT );
