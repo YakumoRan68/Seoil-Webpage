@@ -1,19 +1,12 @@
 <?php include "templates/include/header.php" ?>
+  <!--TODO : 홈페이지 작성(프론트) -->
+  홈페이지
 
-      <ul id="headlines">
-
-<?php foreach ( $results['articles'] as $article ) { ?>
-
-        <li>
-          <h2>
-            <span class="pubDate"><?php echo date("m d H", $article->pub_date)?></span><a href=".?action=viewArticle&amp;articleId=<?php echo $article->article_id?>"><?php echo htmlspecialchars( $article->title)?></a>
-          </h2>
-        </li>
-
-<?php } ?>
-
-      </ul>
-
-      <p><a href="./?action=archive">Article Archive</a></p>
-
+  <p><a href="./?action=archive">테스트 게시판</a></p>
+  
 <?php include "templates/include/footer.php" ?>
+
+<!-- TODO(백엔드) 
+- url 파라메터 지우기(PHP Redirect : Location(), header())
+- Rich Text Editor
+-->

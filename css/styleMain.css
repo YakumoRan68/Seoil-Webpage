@@ -273,7 +273,7 @@ tr:nth-child(odd) {
   background: #fff4cf;
 }
 
-tr:nth-child(even) {
+tr:nth-child(even) { /*짝수*/
   background: #fff;
 }
 
@@ -283,7 +283,7 @@ tr:hover {
 }
 
 
-/* Status and error boxes */
+/* 에러박스의 속성 */
 
 .statusMessage, .errorMessage {
   font-size: .8em;

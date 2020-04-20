@@ -11,9 +11,9 @@
     define( "ADMIN_PASSWORD", "fCyhaxvqYsR5XcP9" );
     require( CLASS_PATH . "/article.php" );
 
-    function handleException( $exception ) {
-      echo "Sorry, a problem occurred. Please try later.";
-      error_log( $exception->getMessage() );
+    function handleException($exception ) {
+      echo "오류 페이지입니다.";
+      error_log($exception->getMessage());
     }
 
     set_exception_handler( 'handleException' );
