@@ -16,6 +16,7 @@
 
 /*0423 comment 
   - 정훈님이 퍼블 작성하신부분에서 폰트 크기 등 디테일한 부분은 정확하게 못따라한게 많습니다. 앞으로 계속 이 파일 수정하면서 바꿔주세요.
+  ******* footer ******* 이런거 다시 작성하셔도됩니다. 대신 그거 때문에 인덴테이션 규칙이 망가지지는 않아야합니다.
 
   - id로 짜여진거 대부분 class으로 바꿨습니다. id가 꼭 필요할때는 거의 없다고 보셔도됩니다. 대신 클래스의 이름을 유일(UNIQUE)하게 적으세요.
     대충 이름에 "위치정보"를 합쳐쓰면 유일한 이름이 될 확률이 높습니다. e.g. "menu" X, "header_menu" O
@@ -66,9 +67,12 @@ body {
   overflow: hidden;
 }
 
-.login a {
+.login {
   display : block;
   float : right;
+}
+
+.login a {
   color :#16A085;
 }
 
@@ -133,11 +137,32 @@ body {
 }
 
 #footer {
+  text-align: center;
   border-top: 1px solid #00a0b0;
   margin-top: 40px;
   padding: 20px 0 0 0;
   font-size: .8em;
 }
+
+.footer_wrapper {
+  text-align: center;
+}
+
+
+.footer_wrapper .title span {
+  color: rgba(255,255,255,0.4);
+}
+
+
+
+
+
+
+
+
+
+
+/* 아래부분부턴 작업이 안된부분입니다. */
 
 #headlines {
   list-style: none;
