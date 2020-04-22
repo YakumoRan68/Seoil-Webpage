@@ -53,3 +53,4 @@
 			</nav>
 		</div>
 	</header>
+	<div class = "main_wrapper">
