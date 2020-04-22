@@ -8,7 +8,8 @@
   <body>
 	<header> <!--시멘틱 태그(header, footer) : 웹 페이지에서 어디가 헤더인지, 푸터인지 표시해주는 html5 표준 태그; 직접 꾸밀게 아니더라도 태그해서 표시는 해야함.-->
 		<div class="header_wrapper">
-			<a href="."><img class="logo" src="images/logoSeoil.png" alt="서일대학교 커뮤니티 로고"/></a>
+			<a href="admin.php">로그인</a>
+			<a href="." class="logo"><img src="images/logoSeoil.png" alt="서일대학교 커뮤니티 로고"/></a>
 			<nav class="header_nav">
 				<ul class="nav">
 					<li><a href="#" accesskey="2" title="">커뮤니티</a>

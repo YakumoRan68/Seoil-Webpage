@@ -1,23 +1,27 @@
-html {
+* { /*모든 디렉토리에 전체 적용*/
   margin: 0px;
   padding: 0px;
-  background: #334467;
+  text-decoration: none;
+  border-collapse: collapse;
+  color: #FFF;
   font-family: 'Questrial', sans-serif;
   font-size: 12pt;
-  border-collapse: collapse;
+}
+
+html {
+  background: #334467;
 }
 
 body {
   /*color: #E5EEFF;*/
   width: 85%;
-  background: #3E5A99;
   margin: 20px auto;
   padding: 20px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
   overflow: hidden;
-  padding: 4em 0em 5em 0em;
+  
 }
 
 .header_nav {
@@ -50,20 +54,17 @@ body {
   background: #3E5A99;
 }
 
-.header_nav .current_page_item a {
-  color: #FFF;
+.nav {
+  width : 100%;
+  margin : 0 auto;
+  display : block;
 }
-
-.nav > li { 
-  width:180px; 
-  border : 1px solid black;
-}
+.nav > li { width:180px; }
 .nav > li:hover, .nav > li:hover a { background:#3E5A99; }
 .nav .active { background:#3E5A99; }
 .nav li ul {
   margin:0;
   padding:0;
-  border : 1px solid black;
   display:none;
   height: auto;
   position: absolute;
@@ -73,13 +74,13 @@ body {
 }
 .nav ul a {	font-weight:normal;	color:white; }
 .nav ul li:hover a:hover { font-weight: bold; text-decoration: underline; color: rgb(0, 0, 0);}
-.nav li:hover ul{ display: block; }
+.nav li:hover ul { display: block; }
 .nav li:hover ul li { z-index:5;	height: auto; overflow: visible; padding: 0; }
 
-.logo {
+.logo img {
+  margin : 0 auto;
   display: block;
-  width: 300px;
-  padding: 0 660px 20px 0;
+  width: 250px;
 }
 
 #footer {
