@@ -1,31 +1,85 @@
-body {
-  margin: 0;
-  color: #333;
-  background-color: #00a0b0;
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  line-height: 1.5em;
+html {
+  margin: 0px;
+  padding: 0px;
+  background: #334467;
+  font-family: 'Questrial', sans-serif;
+  font-size: 12pt;
+  border-collapse: collapse;
 }
 
-#container {
-  width: 80%;
-  background: #fff;
+body {
+  /*color: #E5EEFF;*/
+  width: 85%;
+  background: #3E5A99;
   margin: 20px auto;
   padding: 20px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
+  overflow: hidden;
+  padding: 4em 0em 5em 0em;
 }
 
+.header_nav {
+  margin-top: 15px;
+  text-align: left;
+}
 
-/* The logo and footer */
+.header_nav ul {
+  display: inline-block;
+  padding: 0em 2em;
+  text-align: center;
+}
 
-#logo {
+.header_nav li {
+  display: inline-block;
+}
+
+.header_nav li a, .header_nav li span {
+  display: inline-block;
+  padding: 1.3em 1.5em;
+  text-decoration: none;
+  font-size: 1em; /*0.90em*/
+  font-weight: 600;
+  text-transform: uppercase;
+  outline: 0;
+  color: #FFF;
+}
+
+.header_nav li:hover a, .header_nav li.active a, .header_nav li.active span {
+  background: #3E5A99;
+}
+
+.header_nav .current_page_item a {
+  color: #FFF;
+}
+
+.nav > li { 
+  width:180px; 
+  border : 1px solid black;
+}
+.nav > li:hover, .nav > li:hover a { background:#3E5A99; }
+.nav .active { background:#3E5A99; }
+.nav li ul {
+  margin:0;
+  padding:0;
+  border : 1px solid black;
+  display:none;
+  height: auto;
+  position: absolute;
+  width:180px;
+  z-index:200;
+  background:#3E5A99;
+}
+.nav ul a {	font-weight:normal;	color:white; }
+.nav ul li:hover a:hover { font-weight: bold; text-decoration: underline; color: rgb(0, 0, 0);}
+.nav li:hover ul{ display: block; }
+.nav li:hover ul li { z-index:5;	height: auto; overflow: visible; padding: 0; }
+
+.logo {
   display: block;
   width: 300px;
   padding: 0 660px 20px 0;
-  border: none;
-  border-bottom: 1px solid #00a0b0;
-  margin-bottom: 40px;
 }
 
 #footer {
