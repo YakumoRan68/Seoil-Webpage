@@ -44,11 +44,11 @@ function viewArticle() {
 }
 
 function homepage() {
-  #$results = array();
-  #$data = Article::getList( HOMEPAGE_NUM_ARTICLES );
-  #$results['articles'] = $data['results'];
-  #$results['totalRows'] = $data['totalRows'];
-  #$results['pageTitle'] = "서일대학교 커뮤니티 포털";
+  $results = array();
+  $data = Article::getList( HOMEPAGE_NUM_ARTICLES );
+  $results['articles'] = $data['results'];
+  $results['totalRows'] = $data['totalRows'];
+  $results['pageTitle'] = "서일대학교 커뮤니티 포털";
   require( TEMPLATE_PATH . "/homepage.php" );
 }
 

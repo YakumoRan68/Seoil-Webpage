@@ -66,7 +66,7 @@ body {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
-  overflow: hidden;
+  
 }
 
 .header_wrapper {
@@ -287,6 +287,7 @@ label {
   clear: left;
   text-align: right;
   width: 15%;
+  color: #000;
   padding: .4em 0 0 0;
   margin: .15em .5em 0 0;
 }
@@ -307,6 +308,7 @@ input, textarea, .date {
   -webkit-border-radius: 5px;    
   border-radius: 5px;
   background: #fff;
+  color: #000;
 }
 
 input {
@@ -397,6 +399,7 @@ tr, th, td {
   padding: 10px;
   margin: 0;
   text-align: left;
+  color : #000;
 }
 
 table, th {
@@ -407,7 +410,6 @@ th {
   border-left: none;
   border-right: none;
   background: #ef7d50;
-  color: #fff;
   cursor: default;
 }
 
@@ -424,8 +426,6 @@ tr:hover {
   cursor: pointer;
 }
 
-
-/* 에러박스의 속성 */
 
 .statusMessage, .errorMessage {
   font-size: .8em;

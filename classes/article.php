@@ -80,9 +80,9 @@ class Article {
 
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
     $sql = "INSERT INTO articles (title, content, pub_date) VALUES (:title, :content, :pub_date)";
-    $st = $conn->prepare ($sql );
-    $st->bindValue(":pub_date", $this->pub_date, PDO::PARAM_INT);
+    $st = $conn->prepare ($sql);
     $st->bindValue(":title", $this->title, PDO::PARAM_STR);
+    $st->bindValue(":pub_date", $this->pub_date, PDO::PARAM_INT);
     $st->bindValue(":content", $this->content, PDO::PARAM_STR);
     $st->execute();
     $this->article_id = $conn->lastInsertId();

@@ -60,14 +60,14 @@ function logout() {
 function newArticle() {
 
   $results = array();
-  $results['pageTitle'] = "New Article";
+  $results['pageTitle'] = "글 작성";
   $results['formAction'] = "newArticle";
 
   if ( isset($_POST['saveChanges'])) {
 
     // User has posted the article edit form: save the new article
     $article = new Article;
-    $article->storeFormValues($_POST );
+    $article->storeFormValues($_POST);
     $article->insert();
     header( "Location: admin.php?status=changesSaved" );
 
