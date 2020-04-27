@@ -52,5 +52,19 @@
 				</ul>
 			</nav>
 		</div>
+
+		<div class="slide">
+		<!-- <img id="back" src="img/back.png" alt="" width="100"> -->
+		<ul>
+		  <li><img src="images/name1.png" alt="" width="800" height="170"></li>
+		  <li><img src="images/name2.png" alt="" width="800" height="170"></li>
+		  <li><img src="images/name3.png" alt="" width="800" height="170"></li>
+		  <li><img src="images/name4.png" alt="" width="800" height="170"></li>
+		  <li><img src="images/name5.png" alt="" width="800" height="170"></li>
+		</ul>
+		<!-- <img id="next" src="img/next.png" alt="" width="100"> -->
+	  </div>
+
+
 	</header>
 	<div class = "main_wrapper">

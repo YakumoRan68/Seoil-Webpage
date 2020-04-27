@@ -29,6 +29,29 @@
     만약 작업하는데에 있어서 테이블명이 곂친다 싶으면, 과감하게 지우고 디자인 하신걸로 바꾸세요. 상관없습니다.
 */
 
+/*이미지 슬라이드*/
+@media screen {
+	ul,li{list-style:none;}
+	 .slide{width:800px;height:200px;overflow:hidden;margin:0 auto;padding:0;margin-left: 480PX;}
+	 .slide ul{margin:0 auto;padding:0;width:calc(100% * 4);display:flex;animation:slide 8s infinite;} /* slide를 8초동안 진행하며 무한반복 함 */
+	 .slide li{width:calc(100% / 4);height:200px;}
+	 
+	 @keyframes slide {
+	   0% {margin-left:0;} /* 0 ~ 10  : 정지 */
+	   10% {margin-left:0;} /* 10 ~ 25 : 변이 */
+	   25% {margin-left:-100%;} /* 25 ~ 35 : 정지 */
+	   35% {margin-left:-100%;} /* 35 ~ 50 : 변이 */
+	   50% {margin-left:-200%;}
+	   60% {margin-left:-200%;}
+	   75% {margin-left:-300%;}
+	   85% {margin-left:-300%;}
+	   100% {margin-left:0;}
+	 }
+ }
+
+
+
+
 * { /*모든 디렉토리에 전체 적용*/
   margin: 0px;
   padding: 0px;
