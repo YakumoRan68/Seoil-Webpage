@@ -15,9 +15,9 @@
 
 @media screen {
 	ul,li{list-style:none;}
-	 .slide{width:850px;height:200px;overflow:hidden;margin:0 auto;padding:0; margin-left: 220px;}
+	 .slide{width:850px;height:130px;overflow:hidden;margin:0 auto;padding:0; margin-left: 220px;}
 	 .slide ul{margin:0 auto;padding:0;width:calc(100% * 4);display:flex;animation:slide 8s infinite;} /* slide를 8초동안 진행하며 무한반복 함 */
-	 .slide li{width:calc(100% / 4);height:200px;}
+	 .slide li{width:calc(100% / 4);height:130px;}
 	 
 	 @keyframes slide {
 	   0% {margin-left:0;} /* 0 ~ 10  : 정지 */
@@ -440,12 +440,44 @@
 /*********************************************************************************/
 /* login                                                                        */
 /*********************************************************************************/
-	
+
+.login_insert{
+	margin-left: 5px;
+	font-size: 13px;
+	float: left;
+}
+
+input[type="submit"] {
+float: right;
+/*  display:block; */
+height: 52px;
+font-family: "맑은 고딕";
+}
+
+input[type="text"] {
+float: left;
+/*  display:block; */
+width: 110px;
+font-family: "맑은 고딕";
+margin-bottom: 5px;
+}
+
+
+input[type="password"] {
+float: left;
+/*  display:block; */
+width: 110px;
+font-family: "맑은 고딕";
+margin-bottom: 5px;
+}
+
+
+
  	.login 
 	{
-		width: 221px; 	/*220*/
-		height: 170px; 	/*148*/
-		margin: 0px 5px 5px 0px;
+		width: 210px; 	/*220*/
+		height: 130px; 	/*148*/
+		margin: 0px 20px 5px 0px;
 		float: right;
 		border: solid 0.5px white;
 	}
@@ -513,7 +545,7 @@
 	{
 		width: 961px;
 		height: 588px;
-		margin: 5px 5px;
+		margin: 5px 0px;
 		float: left;
 		border: solid 1px white;
 	}
@@ -615,11 +647,11 @@
 		/*border: solid 1px white;*/
 	}
 
-	#welcome .ad 
+	#welcome .banner
 	{
-		width: 220px;
+		width: 210px;
 		height: 442px;
-		margin: 5px 5px 5px 0px;
+		margin: 5px 20px 5px 0px;
 		float: right;
 		border: 1px solid white;
 	}
