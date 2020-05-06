@@ -13,7 +13,7 @@
 /* img slide                                                                    */
 /*********************************************************************************/
 
-@media screen {
+@media screen { 
 	ul,li{list-style:none;}
 	 .slide{width:850px;height:130px;overflow:hidden;margin:0 auto;padding:0; margin-left: 220px;}
 	 .slide ul{margin:0 auto;padding:0;width:calc(100% * 4);display:flex;animation:slide 8s infinite;} /* slide를 8초동안 진행하며 무한반복 함 */
@@ -555,7 +555,8 @@ a {
 
 .board_list_wrap .paging a.bt {
     border: 1px solid #eee;
-    background: #eee;
+	background: #eee;
+	color: #292929;
 }
 
 .board_list_wrap .paging a.num {
