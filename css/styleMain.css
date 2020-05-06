@@ -35,7 +35,7 @@
   text-decoration: none;
   border-collapse: collapse;
   list-style-type: none;
-  color: #FFF;
+  color: #E5EEFF;
   font-size: 12pt;
   line-height : 1.5em;
 }
@@ -59,7 +59,6 @@ h2 a {
 }
 
 body {
-  /*color: #E5EEFF;*/
   width: 85%;
   margin: 20px auto;
   padding: 20px;
