@@ -1,12 +1,7 @@
 <?php include "templates/include/header.php" ?>
-  <div id="adminHeader">
-    <h2>관리자</h2>
-    <p><b><?php echo htmlspecialchars($_SESSION['username']) ?></b>으로 로그인 하셨습니다. <a href="admin.php?action=logout"?>로그아웃</a></p>
-  </div>
-
   <h1><?php echo $results['pageTitle']?></h1>
 
-  <form action="admin.php?action=<?php echo $results['formAction']?>" method="post">
+  <form action="session.php?action=<?php echo $results['formAction']?>" method="post">
     <input type="hidden" name="articleId" value="<?php echo $results['article']->article_id ?>"/>
 
 <?php if (isset($results['errorMessage'])) { ?>
@@ -35,6 +30,6 @@
   </form>
 
 <?php if ($results['article']->article_id){ ?>
-  <p><a href="admin.php?action=deleteArticle&amp;articleId=<?php echo $results['article']->article_id ?>" onclick="return confirm('정말 이 게시물을 지우겠습니까?')">게시물 삭제</a></p>
+  <p><a href="session.php?action=deleteArticle&amp;articleId=<?php echo $results['article']->article_id ?>" onclick="return confirm('정말 이 게시물을 지우겠습니까?')">게시물 삭제</a></p>
 <?php } ?>
 <?php include "templates/include/footer.php" ?>

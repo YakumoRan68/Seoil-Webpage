@@ -1,2 +1,14 @@
 에러페이지 입니다.
-<?php echo '<script type="text/javascript">alert("존재하지 않는 페이지입니다.")</script>';?> <!--TODO : 오류 판정 객체에서 문자열 반환-->
+<?php 
+    if(isset($_GET['error'])) {
+        $message = "";
+        switch($_GET['error']) {
+            case "test" : $message = "에러테스트"; break;
+            case "articleNotFound" : $message = "존재하지 않는 게시물입니다."; break;
+            case "noPermission" : $message = "권한이 없습니다."; break;
+            case "wrongAccount" : $message = "아이디 혹은 비밀번호를 확인하세요."; break;
+        }
+        echo "<script type='text/javascript'> alert('{$message}'); </script>";
+    }
+    echo "<script type='text/javascript'> history.go(-1) </script>";
+?>

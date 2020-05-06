@@ -9,7 +9,10 @@
 	<header> <!--시멘틱 태그 : 웹 페이지에서 어디가 헤더인지, 푸터인지 등등 표시해주는 html5 표준 태그; 직접 꾸밀게 아니더라도 태그해서 표시는 해야함. 소위말해 웹 국룰입니다. 반드시 지키세요.-->
 		<div class="header_wrapper">
 			<nav class = "login"> <!--nav(시멘틱 태그) : 문서의 부분 중 현재 페이지 내, 또는 다른 페이지로의 링크를 보여주는 구획을 나타내는 용도 -->
-				<a href="admin.php">로그인</a> | <a href="# ">회원가입</a>
+				<?php 
+					if (isset($_SESSION['userid'])) echo '환영합니다 '.$_SESSION['userid'].'님 | <a href="session.php?action=logout">로그아웃</a>';
+					else echo '<a href="session.php?action=login">로그인</a> | <a href="session.php?action=register">회원가입</a>';
+				?>
 			</nav>
 			<a class="logo" href="." ><img src="images/logoSeoil.png" alt="서일대학교 커뮤니티 로고"/><!--이미지는에 꼭 alt 태그 넣으세요.--></a>
 			<nav class="header_menu"> 
