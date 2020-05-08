@@ -11,11 +11,11 @@
     <ul>
       <li>
         <label for="title">게시글 제목</label>
-        <input type="text" name="title" id="title" placeholder="게시물 제목을 입력하세요." required autofocus maxlength="255" value="<?php echo htmlspecialchars($results['article']->title )?>" />
+        <input type="text" name="title" id="title" placeholder="게시물 제목을 입력하세요." required autofocus maxlength="255" value="<?php echo htmlspecialchars($results['article']->title)?>" />
       </li>
       <li>
         <label for="content">내용</label>
-        <textarea name="content" id="content" required maxlength="100000" style="height: 30em;"><?php echo htmlspecialchars($results['article']->content )?></textarea>
+        <textarea name="content" id="content" required maxlength="100000" style="height: 30em;"><?php echo htmlspecialchars($results['article']->content)?></textarea>
       </li>
       <li>
         <label for="pub_date">작성일</label>

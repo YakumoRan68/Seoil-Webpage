@@ -194,6 +194,100 @@ ul.contact li a:before {
   color: rgba(255,255,255,.5);
 }
 
+/*/////////////////////////////////////*/
+
+.box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25rem;
+  padding: 2.5rem;
+  box-sizing: border-box;
+  border: 1px solid #dadce0;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+}
+
+.box h2 {
+  margin: 0px 0 -0.125rem;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  color: #202124;
+  font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.box p {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: .1px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.box .inputBox {
+  position: relative;
+}
+
+.box .inputBox input {
+  width: 93%;
+  padding: 0.625rem 10px;
+  font-size: 1rem;
+  letter-spacing: 0.062rem;
+  margin-bottom: 1.875rem;
+  border: 1px solid #ccc;
+  background: transparent;
+  border-radius: 4px;
+  
+}
+
+.box .inputBox label {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  padding: 0.625rem 0;
+  font-size: 1rem;
+  color: grey;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.box .inputBox input:focus ~ label,
+.box .inputBox input:valid ~ label,
+.box .inputBox input:not([value=""]) ~ label {
+  top: -1.125rem;
+  left: 10px;
+  color: #1a73e8;
+  font-size: 0.75rem;
+  background-color: white;
+  height: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.box .inputBox input:focus {
+  outline: none;
+  border: 2px solid #1a73e8;
+}
+.box input[type="submit"] {
+  border: none;
+  outline: none;
+  color: #fff;
+  background-color: #1a73e8;
+  padding: 0.625rem 1.25rem;
+  cursor: pointer;
+  border-radius: 0.312rem;
+  font-size: 1rem;
+  float: right;
+}
+
+.box input[type="submit"]:hover {
+  background-color: #287ae6;
+  box-shadow: 0 1px 1px 0 rgba(66,133,244,0.45), 0 1px 3px 1px rgba(66,133,244,0.3);
+}
 
 
 
@@ -201,6 +295,10 @@ ul.contact li a:before {
 
 
 /* 아래부분부턴 작업이 안된부분입니다. */
+/*
+
+
+
 
 #headlines {
   list-style: none;
@@ -260,8 +358,6 @@ form {
 }
 
 
-/* Give form elements consistent margin, padding and line height */
-
 form ul {
   list-style: none;
   margin: 0;
@@ -277,9 +373,6 @@ form * {
   line-height: 1em;
 }
 
-
-/* The field labels */
-
 label {
   display: block;
   float: left;
@@ -290,9 +383,6 @@ label {
   padding: .4em 0 0 0;
   margin: .15em .5em 0 0;
 }
-
-
-/* The fields */
 
 input, select, textarea {
   display: block;
@@ -331,24 +421,15 @@ textarea {
 textarea#content {
   font-family: "Courier New", courier, fixed;
 }
-  
-
-/* Place a border around focused fields */
 
 form *:focus {
   border: 2px solid #7c412b;
   outline: none;
 }
 
-
-/* Display correctly filled-in fields with a green background */
-
 input:valid, textarea:valid {
   background: #efe;
 }
-
-
-/* Submit buttons */
 
 .buttons {
   text-align: center;
@@ -387,8 +468,6 @@ input[type="submit"]:active {
 }
 
 
-/* Tables */
-
 table {
   width: 100%;
   border-collapse: collapse;
@@ -416,7 +495,7 @@ tr:nth-child(odd) {
   background: #fff4cf;
 }
 
-tr:nth-child(even) { /*짝수*/
+tr:nth-child(even) {
   background: #fff;
 }
 
@@ -424,7 +503,6 @@ tr:hover {
   background: #ddd;
   cursor: pointer;
 }
-
 
 .statusMessage, .errorMessage {
   font-size: .8em;

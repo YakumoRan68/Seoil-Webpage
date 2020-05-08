@@ -15,7 +15,7 @@ switch ($action) {
   default : listArticles();
 }
 
-if ($action != "login" && $action != "logout" && !$userid ) {
+if ($action != "login" && $action != "logout" && !$userid) {
   //login(); <- 이부분 의존성 제거
 
   //exit;
@@ -48,12 +48,12 @@ function login() {
 
         header("Location: session.php");
       } else {
-        header("Location: ".ERROR_PATH."?error=wrongAccount" );
-        require(TEMPLATE_PATH . "/admin/loginForm.php" );
+        header("Location: ".ERROR_PATH."?error=wrongAccount");
+        require(TEMPLATE_PATH . "/admin/loginForm.php");
       }
     }
   } else {
-    require(TEMPLATE_PATH . "/admin/loginForm.php" );
+    require(TEMPLATE_PATH . "/admin/loginForm.php");
   }
 }
 
@@ -84,7 +84,7 @@ function register() {
     header("Location: session.php");
     alert("회원가입이 완료되었습니다. 가입한 계정으로 로그인 해주세요.");
   } else {
-    require(TEMPLATE_PATH . "/admin/registrationForm.php" );
+    require(TEMPLATE_PATH . "/admin/registrationForm.php");
   }
 }
 
@@ -97,12 +97,12 @@ function newArticle() {
     $article = new Article;
     $article->storeFormValues($_POST);
     $article->insert();
-    header("Location: session.php?status=changesSaved" );
+    header("Location: session.php?status=changesSaved");
   } elseif (isset($_POST['cancel'])) {
-    header("Location: session.php" );
+    header("Location: session.php");
   } else {
     $results['article'] = new Article;
-    require(TEMPLATE_PATH . "/admin/editArticle.php" );
+    require(TEMPLATE_PATH . "/admin/editArticle.php");
   }
 }
 
@@ -114,30 +114,30 @@ function editArticle() {
   if (isset($_POST['saveChanges'])) {
     $article = Article::getById((int)$_POST['articleId']);
     if (!hasPermissionInCurrentSession($article->author_id)){
-      header("Location: ".ERROR_PATH."?error=noPermission" );
+      header("Location: ".ERROR_PATH."?error=noPermission");
       return;
     }
 
     $article->storeFormValues($_POST);
     $article->update();
-    header("Location: session.php?status=changesSaved" );
+    header("Location: session.php?status=changesSaved");
   } elseif (isset($_POST['cancel'])) {
-    header("Location: session.php" );
+    header("Location: session.php");
   } else {
     $results['article'] = Article::getById((int)$_GET['articleId']);
-    require(TEMPLATE_PATH . "/admin/editArticle.php" );
+    require(TEMPLATE_PATH . "/admin/editArticle.php");
   }
 }
 
 
 function deleteArticle() {
   if (!$article = Article::getById((int)$_GET['articleId'])) {
-    header("Location: session.php?error=articleNotFound" );
+    header("Location: session.php?error=articleNotFound");
     return;
   } elseif(!hasPermissionInCurrentSession($article->author_id)) return header("Location: ".ERROR_PATH."?error=noPermission");
 
   $article->delete();
-  header("Location: session.php?status=articleDeleted" );
+  header("Location: session.php?status=articleDeleted");
 }
 
 
@@ -149,11 +149,11 @@ function listArticles() {
   $results['pageTitle'] = "모든 게시글";
 
   if (isset($_GET['status'])) {
-    if ($_GET['status'] == "changesSaved" ) $results['statusMessage'] = "게시글이 저장되었습니다.";
-    if ($_GET['status'] == "articleDeleted" ) $results['statusMessage'] = "게시글이 삭제되었습니다.";
+    if ($_GET['status'] == "changesSaved") $results['statusMessage'] = "게시글이 저장되었습니다.";
+    if ($_GET['status'] == "articleDeleted") $results['statusMessage'] = "게시글이 삭제되었습니다.";
   }
 
-  require(TEMPLATE_PATH . "/admin/listArticles.php" );
+  require(TEMPLATE_PATH . "/admin/listArticles.php");
 }
 
 ?>

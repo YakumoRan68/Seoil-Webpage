@@ -53,7 +53,7 @@ class Article {
     $list = array();
 
     while ($row = $st->fetch()) {
-      $article = new Article($row );
+      $article = new Article($row);
       $list[] = $article;
     }
 
@@ -66,11 +66,11 @@ class Article {
   }
 
   public function view() {
-    if (is_null($this->article_id)) trigger_error ("Article::view(): Attempt to update an Article object that does not have its ID property set.", E_USER_ERROR );
+    if (is_null($this->article_id)) trigger_error ("Article::view(): Attempt to update an Article object that does not have its ID property set.", E_USER_ERROR);
     
     $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
     $sql = "UPDATE articles SET views = views + 1 where article_id = :article_id";
-    $st = $conn->prepare ($sql );
+    $st = $conn->prepare ($sql);
     $st->bindValue(":article_id", $this->article_id, PDO::PARAM_INT);
     $st->execute();
 
@@ -78,7 +78,7 @@ class Article {
   }
 
   public function insert() {
-    if (!is_null($this->article_id)) trigger_error ("Article::insert(): Attempt to insert an Article object that already has its ID property set.", E_USER_ERROR );
+    if (!is_null($this->article_id)) trigger_error ("Article::insert(): Attempt to insert an Article object that already has its ID property set.", E_USER_ERROR);
 
     $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
     $sql = "INSERT INTO articles (title, content, pub_date, author_id) VALUES (:title, :content, :pub_date, :author_id)";
@@ -94,7 +94,7 @@ class Article {
   }
 
   public function update() {
-    if (is_null($this->article_id)) trigger_error ("Article::update(): Attempt to update an Article object that does not have its ID property set.", E_USER_ERROR );
+    if (is_null($this->article_id)) trigger_error ("Article::update(): Attempt to update an Article object that does not have its ID property set.", E_USER_ERROR);
    
     $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
     $sql = "UPDATE articles SET pub_date=:pub_date, title=:title, content=:content WHERE article_id = :article_id";
@@ -110,7 +110,7 @@ class Article {
   }
 
   public function delete() {
-    if (is_null($this->article_id)) trigger_error ("Article::delete(): Attempt to delete an Article object that does not have its ID property set.", E_USER_ERROR );
+    if (is_null($this->article_id)) trigger_error ("Article::delete(): Attempt to delete an Article object that does not have its ID property set.", E_USER_ERROR);
     elseif(!hasPermissionInCurrentSession($this->author_id)) return header("Location: ".ERROR_PATH."?error=noPermission");
 
     $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
