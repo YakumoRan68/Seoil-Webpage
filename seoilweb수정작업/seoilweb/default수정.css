@@ -590,16 +590,16 @@ a {
 ::-webkit-input-placeholder{color: #a8a8a8;}
 ::-moz-placeholder{color: #a8a8a8;}
 
-.a_insert{
+.text_insert{
 	height: 25px;
 	width: 490px;
 	border: 1px solid #1ABC9C;
 	background: #FFFFFF;
 	margin-top: 10px;
-	margin-left: 280px;
+	margin-left: 230px;
 }
 
-.a_insert input[type="text"] {
+.text_insert input[type="text"] {
 	font-size: 16px;
 	width: 310px;
 	height: 0px;
@@ -618,7 +618,7 @@ a {
 		float: right;
 		color: #FFFFFF;
 	}
-	.a_insert select[name="language"]
+	.text_insert select[name="language"]
 	{
 		height: 25px;
 		
