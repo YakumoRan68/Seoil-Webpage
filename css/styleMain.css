@@ -194,336 +194,72 @@ ul.contact li a:before {
   color: rgba(255,255,255,.5);
 }
 
-/*/////////////////////////////////////*/
 
-.box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 25rem;
-  padding: 2.5rem;
-  box-sizing: border-box;
-  border: 1px solid #dadce0;
-  -webkit-border-radius: 8px;
-  border-radius: 8px;
-}
 
-.box h2 {
-  margin: 0px 0 -0.125rem;
-  padding: 0;
-  color: #fff;
-  text-align: center;
-  color: #202124;
-  font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
-  font-size: 24px;
-  font-weight: 400;
-}
-
-.box p {
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: .1px;
-  line-height: 1.5;
-  margin-bottom: 25px;
-  text-align: center;
-}
-
-.box .inputBox {
-  position: relative;
-}
-
-.box .inputBox input {
-  width: 93%;
-  padding: 0.625rem 10px;
-  font-size: 1rem;
-  letter-spacing: 0.062rem;
-  margin-bottom: 1.875rem;
-  border: 1px solid #ccc;
-  background: transparent;
-  border-radius: 4px;
+.loginBox { /***************************** 로그인 박스; 로그인 하고나서도 프로필 부분처럼 활용하는 부분의 wrapper입니다. ********************************/
+  width : 20%;
+  border : 1px solid #fff;
+  text-align : left;
+  padding : 3px 5px 3px 10px;
   
 }
 
-.box .inputBox label {
-  position: absolute;
-  top: 0;
-  left: 10px;
-  padding: 0.625rem 0;
-  font-size: 1rem;
-  color: grey;
-  pointer-events: none;
-  transition: 0.5s;
+.loginBox form {
+  width : 100%;
+  height : 3.4rem;
 }
 
-.box .inputBox input:focus ~ label,
-.box .inputBox input:valid ~ label,
-.box .inputBox input:not([value=""]) ~ label {
-  top: -1.125rem;
-  left: 10px;
-  color: #1a73e8;
-  font-size: 0.75rem;
-  background-color: white;
-  height: 10px;
-  padding-left: 5px;
-  padding-right: 5px;
+.loginBox h2 {
+  margin: 0px 0 -0.15rem;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  font-family: 'Google Sans','Noto Sans Myanmar UI', arial, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
 }
-.box .inputBox input:focus {
+
+.loginBox .loginInputBox {
+  width : 60%;
+  float: left;
+}
+
+.loginBox .loginInputBox input {
+  width : 100%;
+  padding: 0.225rem 0;
+  font-size: .5rem;
+  letter-spacing: 0.03rem;
+  margin-left: 5rem;
+  margin-bottom: .07rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  color : #000;
+  text-align : left;
+}
+
+.loginBox .loginInputBox input:focus {
   outline: none;
   border: 2px solid #1a73e8;
 }
-.box input[type="submit"] {
+
+.loginBox input[type="submit"] {
+  width : 35%;
+  height : 3rem;
   border: none;
   outline: none;
   color: #fff;
   background-color: #1a73e8;
-  padding: 0.625rem 1.25rem;
   cursor: pointer;
-  border-radius: 0.312rem;
   font-size: 1rem;
-  float: right;
+  margin : .3rem 0 0 .45rem;
 }
 
-.box input[type="submit"]:hover {
+.loginBox input[type="submit"]:hover {
   background-color: #287ae6;
   box-shadow: 0 1px 1px 0 rgba(66,133,244,0.45), 0 1px 3px 1px rgba(66,133,244,0.3);
 }
 
-
-
-
-
-
-/* 아래부분부턴 작업이 안된부분입니다. */
-/*
-
-
-
-
-#headlines {
-  list-style: none;
-  padding-left: 0;
-  width: 75%;
-}
-
-#headlines li {
-  margin-bottom: 2em;
-}
-
-.pubDate {
-  font-size: .8em;
-  color: #eb6841;
-  text-transform: uppercase;
-}
-
-#headlines .pubDate {
-  display: inline-block;
-  width: 100px;
-  font-size: .5em;
-  vertical-align: middle;
-}
-
-#headlines.archive .pubDate {
-  width: 130px;
-}
-
-.summary {
-  padding-left: 100px;
-}
-
-#headlines.archive .summary {
-  padding-left: 130px;
-}
-
-#adminHeader {
-  width: 940px;
-  padding: 0 10px;
-  border-bottom: 1px solid #00a0b0;
-  margin: -30px 0 40px 0;
-  font-size: 0.8em;
-}
-
-form {
-  margin: 20px auto;
-  padding: 40px 20px;
-  overflow: auto;
-  background: #fff4cf;
-  border: 1px solid #666;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;  
-  border-radius: 5px;
-  -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
-  -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
-  box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
-}
-
-
-form ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-form ul li {
-  margin: .9em 0 0 0;
-  padding: 0;
-}
-
-form * {
-  line-height: 1em;
-}
-
-label {
-  display: block;
-  float: left;
-  clear: left;
-  text-align: right;
-  width: 15%;
-  color: #000;
-  padding: .4em 0 0 0;
-  margin: .15em .5em 0 0;
-}
-
-input, select, textarea {
-  display: block;
-  margin: 0;
-  padding: .4em;
-  width: 80%;
-}
-
-input, textarea, .date {
-  border: 2px solid #666;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;    
-  border-radius: 5px;
-  background: #fff;
-  color: #000;
-}
-
-input {
-  font-size: .9em;
-}
-
-select {
-  padding: 0;
-  margin-bottom: 2.5em;
-  position: relative;
-  top: .7em;
-}
-
-textarea {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  font-size: .9em;
-  height: 5em;
-  line-height: 1.5em;
-}
-
-textarea#content {
-  font-family: "Courier New", courier, fixed;
-}
-
-form *:focus {
-  border: 2px solid #7c412b;
-  outline: none;
-}
-
-input:valid, textarea:valid {
-  background: #efe;
-}
-
-.buttons {
-  text-align: center;
-  margin: 40px 0 0 0;
-}
-
-input[type="submit"] {
-  display: inline;
-  margin: 0 20px;
-  width: 12em;
-  padding: 10px;
-  border: 2px solid #7c412b;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;  
-  border-radius: 5px;
-  -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
-  -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
-  box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
-  color: #fff;
-  background: #ef7d50;
-  font-weight: bold;
-  -webkit-appearance: none;
-}
-
-input[type="submit"]:hover, input[type="submit"]:active {
-  cursor: pointer;
-  background: #fff;
-  color: #ef7d50;
-}
-
-input[type="submit"]:active {
-  background: #eee;
-  -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8) inset;
-  -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8) inset;
-  box-shadow: 0 0 .5em rgba(0, 0, 0, .8) inset;
-}
-
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-tr, th, td {
-  padding: 10px;
-  margin: 0;
-  text-align: left;
-  color : #000;
-}
-
-table, th {
-  border: 1px solid #00a0b0;
-}
-
-th {
-  border-left: none;
-  border-right: none;
-  background: #ef7d50;
-  cursor: default;
-}
-
-tr:nth-child(odd) {
-  background: #fff4cf;
-}
-
-tr:nth-child(even) {
-  background: #fff;
-}
-
-tr:hover {
-  background: #ddd;
-  cursor: pointer;
-}
-
-.statusMessage, .errorMessage {
-  font-size: .8em;
-  padding: .5em;
-  margin: 2em 0;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px; 
-  -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
-  -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
-  -box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
-}
-
-.statusMessage {
-  background-color: #2b2;
-  border: 1px solid #080;
-  color: #fff;
-}
-
-.errorMessage {
-  background-color: #f22;
-  border: 1px solid #800;
-  color: #fff;
+.loginBox a {
+  margin-top : 10rem;
+  font-size : .8rem;
 }

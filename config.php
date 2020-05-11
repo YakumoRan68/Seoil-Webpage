@@ -8,6 +8,7 @@
     define("DB_PASSWORD", "VZXxmKXUH03T9Jmq");
     define("CLASS_PATH", "classes");
     define("TEMPLATE_PATH", "templates");
+    define("IMAGES_PATH", "images");
     define("ERROR_PATH", TEMPLATE_PATH."/error.php");
     define("HOMEPAGE_NUM_ARTICLES", 5);
     define("ADMIN_USERNAME", "admin");

@@ -54,6 +54,25 @@
 					</li>
 				</ul>
 			</nav>
+			<div class="header_slide">
+				<ul>
+					<li><img src="img/banner_test.png" alt="" width="1020" height="130"></li>
+				</ul>
+			</div>
+			<div class="loginBox">
+				<h2>서일 로그인</h2>
+				<form action="session.php?action=login" method="post">
+					<input type="hidden" name="login" value="true" />
+					<div class="loginInputBox">
+						<input type="text" name="userid" required onkeyup="this.setAttribute('value', this.value);"  value="" placeholder="아이디">
+					</div>
+					<div class="loginInputBox">
+						<input type="password" name="userpw" required onkeyup="this.setAttribute('value', this.value);" value="" placeholder="비밀번호">
+					</div>
+					<input type="submit" name="login" value="로그인">
+				</form>
+				<a href="#">아이디/비밀번호 찾기</a> <a href="session.php?action=register">회원가입</a>
+			</div>
 		</div>
 	</header>
 	<div class = "main_wrapper">

@@ -1,7 +1,6 @@
 <?php
 
 require("config.php");
-//session_start();
 $action = isset($_GET['action']) ? $_GET['action'] : "";
 $userid = isset($_SESSION['userid']) ? $_SESSION['userid'] : "";
 
@@ -15,45 +14,40 @@ switch ($action) {
   default : listArticles();
 }
 
-if ($action != "login" && $action != "logout" && !$userid) {
-  //login(); <- 이부분 의존성 제거
-
-  //exit;
-}
-
 function login() {
   $results = array();
   $results['pageTitle'] = "Login | 서일대학교 커뮤니티 포털";
 
-  if (isset($_POST['login'])) {
-    $userid = $_POST['userid'];
-    $password = $_POST['userpw'];
+  if (!isset($_SESSION['userid'])) {
+    if (isset($_POST['login'])) {
+      $userid = $_POST['userid'];
+      $password = $_POST['userpw'];
 
-    if ($userid == ADMIN_USERNAME && $password == ADMIN_PASSWORD) {
-      $_SESSION['userid'] = ADMIN_USERNAME;
-      header("Location: session.php");
-    } else {
-      $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-      $sql = "SELECT * FROM accounts WHERE userid=:userid";
-      $st = $conn->prepare ($sql);
-      $st->bindValue(":userid", $userid, PDO::PARAM_STR);
-      $st->execute();
-      $account = $st->fetch();
-
-      $conn = null;
-
-      if (password_verify($password, $account['userpw'])) {
-        $_SESSION['userid'] = $userid;
-        $_SESSION['userpw'] = $account['userpw'];
-
+      if ($userid == ADMIN_USERNAME && $password == ADMIN_PASSWORD) {
+        $_SESSION['userid'] = ADMIN_USERNAME;
         header("Location: session.php");
       } else {
-        header("Location: ".ERROR_PATH."?error=wrongAccount");
-        require(TEMPLATE_PATH . "/admin/loginForm.php");
+        $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+        $sql = "SELECT * FROM accounts WHERE userid=:userid";
+        $st = $conn->prepare ($sql);
+        $st->bindValue(":userid", $userid, PDO::PARAM_STR);
+        $st->execute();
+        $account = $st->fetch();
+
+        $conn = null;
+
+        if (password_verify($password, $account['userpw'])) {
+          $_SESSION['userid'] = $userid;
+          $_SESSION['userpw'] = $account['userpw'];
+
+          header("Location: session.php");
+        } else {
+          error_page("wrongAccount");
+        }
       }
-    }
+    } 
   } else {
-    require(TEMPLATE_PATH . "/admin/loginForm.php");
+    error_page("alreadyInSession");
   }
 }
 
@@ -81,8 +75,8 @@ function register() {
     $st->execute();
 
     $conn = null;
+    alert("회원가입이 완료되었습니다. 가입한 계정으로 로그인 해주세요."); //TODO : 계정 인증절차(메일서버 구축)
     header("Location: session.php");
-    alert("회원가입이 완료되었습니다. 가입한 계정으로 로그인 해주세요.");
   } else {
     require(TEMPLATE_PATH . "/admin/registrationForm.php");
   }
@@ -114,7 +108,7 @@ function editArticle() {
   if (isset($_POST['saveChanges'])) {
     $article = Article::getById((int)$_POST['articleId']);
     if (!hasPermissionInCurrentSession($article->author_id)){
-      header("Location: ".ERROR_PATH."?error=noPermission");
+      error_page("noPermission");
       return;
     }
 
@@ -132,9 +126,9 @@ function editArticle() {
 
 function deleteArticle() {
   if (!$article = Article::getById((int)$_GET['articleId'])) {
-    header("Location: session.php?error=articleNotFound");
+    error_page("articleNotFound");
     return;
-  } elseif(!hasPermissionInCurrentSession($article->author_id)) return header("Location: ".ERROR_PATH."?error=noPermission");
+  } elseif(!hasPermissionInCurrentSession($article->author_id)) return error_page("noPermission");
 
   $article->delete();
   header("Location: session.php?status=articleDeleted");

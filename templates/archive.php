@@ -9,7 +9,7 @@
       <th>제목</th>
       <th>조회수</th>
     </tr>
-<?php foreach ($results['articles'] as $article ) { ?>
+<?php foreach ($results['articles'] as $article) { ?>
     <tr onclick="location='?action=viewArticle&amp;articleId=<?php echo $article->article_id?>'">
       <td><?php echo $article->article_id ?></td>
       <td><?php echo $article->author_id ?></td>
@@ -21,6 +21,6 @@
 <?php } ?>
   </table>
 
-  <p>총 <?php echo $results['totalRows']?>개의 게시글<?php echo ($results['totalRows'] != 1 ) ? '들' : '' ?>이 있습니다.</p>
+  <p>총 <?php echo $results['totalRows']?>개의 게시글<?php echo ($results['totalRows'] != 1) ? '들' : '' ?>이 있습니다.</p>
   <p><a href="./">홈페이지로 돌아가기</a></p>
 <?php include "templates/include/footer.php" ?>

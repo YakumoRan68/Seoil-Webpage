@@ -29,6 +29,10 @@ class Article {
     }
   }
 
+  public static function getArticleKey($category_id) {
+    
+  }
+
   public static function getById($article_id) {
     $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
     $sql = "SELECT *, pub_date AS pub_date FROM articles WHERE article_id = :article_id";
@@ -39,7 +43,7 @@ class Article {
 
     $conn = null;
     if ($row) return new Article($row);
-    else return header("Location: ".ERROR_PATH."?error=articleNotFound");
+    else return error_page("articleNotFound");
   }
 
   public static function getList($numRows=1000000) {
@@ -111,7 +115,7 @@ class Article {
 
   public function delete() {
     if (is_null($this->article_id)) trigger_error ("Article::delete(): Attempt to delete an Article object that does not have its ID property set.", E_USER_ERROR);
-    elseif(!hasPermissionInCurrentSession($this->author_id)) return header("Location: ".ERROR_PATH."?error=noPermission");
+    elseif(!hasPermissionInCurrentSession($this->author_id)) return error_page("noPermission");
 
     $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
     $st = $conn->prepare ("DELETE FROM articles WHERE article_id = :article_id LIMIT 1");
