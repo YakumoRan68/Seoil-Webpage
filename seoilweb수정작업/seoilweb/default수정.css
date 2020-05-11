@@ -9,6 +9,7 @@
 	overflow: hidden;
 }*/
 
+
 /*********************************************************************************/
 /* img slide                                                                    */
 /*********************************************************************************/
@@ -583,7 +584,46 @@ a {
 		float: right;
 		border: 1px solid white;
 	}
+	.board_list_wrap .paging .create_article{ float:right;margin-right: 9px;}
+	
+:-ms-input-placeholder{color: #a8a8a8;}
+::-webkit-input-placeholder{color: #a8a8a8;}
+::-moz-placeholder{color: #a8a8a8;}
 
+.a_insert{
+	height: 25px;
+	width: 490px;
+	border: 1px solid #1ABC9C;
+	background: #FFFFFF;
+	margin-top: 10px;
+	margin-left: 280px;
+}
+
+.a_insert input[type="text"] {
+	font-size: 16px;
+	width: 310px;
+	height: 0px;
+	padding: 11px;
+	border:  1px solid black;
+	
+	outline: none;
+	float: left;
+	}
+	.btn_insert{
+		width: 50px;
+		height: 100%;
+		border: 0px;
+		background: #16A085;
+		outline: none;
+		float: right;
+		color: #FFFFFF;
+	}
+	.a_insert select[name="language"]
+	{
+		height: 25px;
+		
+		float: left;
+	}
 
 /*********************************************************************************/
 /* Banner                                                                        */
