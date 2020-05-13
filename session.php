@@ -1,8 +1,9 @@
 <?php
 
 require("config.php");
-$action = isset($_GET['action']) ? $_GET['action'] : "";
-$userid = isset($_SESSION['userid']) ? $_SESSION['userid'] : "";
+
+$action = $_GET['action'] ?? "";
+$userid = $_SESSION['userid'] ?? "";
 
 switch ($action) {
   case 'login': login(); break;
@@ -10,13 +11,14 @@ switch ($action) {
   case 'register': register(); break;
   case 'newArticle': newArticle(); break;
   case 'editArticle': editArticle(); break;
+  case 'viewArticle': viewArticle(); break;
   case 'deleteArticle': deleteArticle(); break;
-  default : listArticles();
+  default : loadPage();
 }
 
 function login() {
   $results = array();
-  $results['pageTitle'] = "Login | 서일대학교 커뮤니티 포털";
+  $results['pageTitle'] = "Login | 서뮤니티";
 
   if (!isset($_SESSION['userid'])) {
     if (isset($_POST['login'])) {
@@ -38,8 +40,7 @@ function login() {
 
         if (password_verify($password, $account['userpw'])) {
           $_SESSION['userid'] = $userid;
-          $_SESSION['userpw'] = $account['userpw'];
-
+          $_SESSION['username'] = $account['realname'];
           header("Location: session.php");
         } else {
           error_page("wrongAccount");
@@ -53,8 +54,10 @@ function login() {
 
 function logout() {
   unset($_SESSION['userid']);
-  unset($_SESSION['userpw']);
+  unset($_SESSION['username']);
+  unset($_SESSION['location']);
   session_destroy();
+
   header("Location: session.php");
 }
 
@@ -78,8 +81,21 @@ function register() {
     alert("회원가입이 완료되었습니다. 가입한 계정으로 로그인 해주세요."); //TODO : 계정 인증절차(메일서버 구축)
     header("Location: session.php");
   } else {
-    require(TEMPLATE_PATH . "/admin/registrationForm.php");
+    require(TEMPLATE_PATH . "/registrationForm.php");
   }
+}
+
+function viewArticle() {
+  if (!isset($_GET["articleId"]) || !isset($_GET['categoryId'])) return error_page("articleNotFound");
+
+  $results = array();
+  $results['article'] = Article::getByUID((int)$_GET["articleId"], $_GET['categoryId']);
+
+  if (!empty($results['article'])) $results['article']->view();
+  else error_page("articleNotFound");
+
+  $results['pageTitle'] = $results['article']->title . " | 서뮤니티";
+  require(TEMPLATE_PATH . "/viewArticle.php");
 }
 
 function newArticle() {
@@ -90,13 +106,13 @@ function newArticle() {
   if (isset($_POST['saveChanges'])) {
     $article = new Article;
     $article->storeFormValues($_POST);
-    $article->insert();
-    header("Location: session.php?status=changesSaved");
+    $article->insert($_GET['categoryId']);
+    goPage(array("status"=>"changesSaved", "location"=>getFileName($_GET['categoryId'])));
   } elseif (isset($_POST['cancel'])) {
-    header("Location: session.php");
+    goPage(array("location"=>getFileName($_POST['categoryId'])));
   } else {
     $results['article'] = new Article;
-    require(TEMPLATE_PATH . "/admin/editArticle.php");
+    require(TEMPLATE_PATH . "/editArticle.php");
   }
 }
 
@@ -106,48 +122,57 @@ function editArticle() {
   $results['formAction'] = "editArticle";
 
   if (isset($_POST['saveChanges'])) {
-    $article = Article::getById((int)$_POST['articleId']);
+    $article = Article::getByUID((int)$_POST['articleId'], $_POST['categoryId']);
     if (!hasPermissionInCurrentSession($article->author_id)){
-      error_page("noPermission");
-      return;
+      return error_page("noPermission");
     }
 
     $article->storeFormValues($_POST);
     $article->update();
-    header("Location: session.php?status=changesSaved");
+    goPage(array("status"=>"changesSaved", "location"=>getFileName($_POST['categoryId'])));
   } elseif (isset($_POST['cancel'])) {
-    header("Location: session.php");
+    goPage(array("location"=>getFileName($_POST['categoryId'])));
   } else {
-    $results['article'] = Article::getById((int)$_GET['articleId']);
-    require(TEMPLATE_PATH . "/admin/editArticle.php");
+    $results['article'] = Article::getByUID((int)$_GET['articleId'], $_GET['categoryId']);
+    require(TEMPLATE_PATH . "/editArticle.php");
   }
 }
-
 
 function deleteArticle() {
-  if (!$article = Article::getById((int)$_GET['articleId'])) {
-    error_page("articleNotFound");
-    return;
-  } elseif(!hasPermissionInCurrentSession($article->author_id)) return error_page("noPermission");
+  if (!$article = Article::getByUID((int)$_GET['articleId'], $_GET['categoryId'])) return error_page("articleNotFound");
+  elseif(!hasPermissionInCurrentSession($article->author_id)) return error_page("noPermission");
 
   $article->delete();
-  header("Location: session.php?status=articleDeleted");
+  goPage(array("status"=>"articleDeleted", "location"=>getFileName($_GET['categoryId'])));
 }
 
+function requestList($cnum) { #홈페이지 등에서 여러 페이지 한꺼번에 요청
 
-function listArticles() {
-  $results = array();
-  $data = Article::getList();
-  $results['articles'] = $data['results'];
-  $results['totalRows'] = $data['totalRows'];
-  $results['pageTitle'] = "모든 게시글";
+}
 
-  if (isset($_GET['status'])) {
-    if ($_GET['status'] == "changesSaved") $results['statusMessage'] = "게시글이 저장되었습니다.";
-    if ($_GET['status'] == "articleDeleted") $results['statusMessage'] = "게시글이 삭제되었습니다.";
+function loadPage() {
+  $locations = getLocation();
+  $pagename = $_GET['location'] ?? "homepage";
+  $cnum = (int)getCategoryKey($pagename);
+  $results['pageTitle'] = $locations[$cnum][1];
+
+  if($locations[$cnum][2] ?? false) {
+    $results = array();
+    $data = Article::getList(getCategoryKey($cnum));
+    $results['articles'] = $data['results'];
+    $results['totalRows'] = $data['totalRows'];
+
+    if (isset($_GET['status'])) {
+      if ($_GET['status'] == "changesSaved") $results['statusMessage'] = "게시글이 저장되었습니다.";
+      if ($_GET['status'] == "articleDeleted") $results['statusMessage'] = "게시글이 삭제되었습니다.";
+    }
   }
 
-  require(TEMPLATE_PATH . "/admin/listArticles.php");
+  try {
+    require(TEMPLATE_PATH."/contents/".$pagename.".php");
+  } catch(exception $e) {
+    require(TEMPLATE_PATH."/contents/test.php");
+  }
 }
 
 ?>

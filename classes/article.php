@@ -1,9 +1,9 @@
 <?php
 
 class Article {
+  public $category_id = null;
   public $article_id = null;
   public $author_id = null;
-  public $category_id = null;
   public $title = null;
   public $content = null;
   public $reg_date = null;
@@ -11,9 +11,9 @@ class Article {
   public $views = null;
 
   public function __construct($data=array()) {
+    if (isset($data['category_id'])) $this->category_id = $data['category_id'];
     if (isset($data['article_id'])) $this->article_id = (int)$data['article_id'];
     if (isset($data['author_id'])) $this->author_id = $data['author_id'];
-    if (isset($data['category_id'])) $this->category_id = (int)$data['category_id'];
     if (isset($data['title'])) $this->title = preg_replace('/[^\x{1100}-\x{11FF}\x{3130}-\x{318F}\x{AC00}-\x{D7AF}0-9a-zA-Z\s]/u', "", $data['title']);
     if (isset($data['content'])) $this->content = $data['content']; //TODO : Rich Text Editor
     if (isset($data['reg_date'])) $this->reg_date = (int)$data['reg_date'];
@@ -29,15 +29,12 @@ class Article {
     }
   }
 
-  public static function getArticleKey($category_id) {
-    
-  }
-
-  public static function getById($article_id) {
+  public static function getByUID($article_id, $category_id = "000") {
     $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-    $sql = "SELECT *, pub_date AS pub_date FROM articles WHERE article_id = :article_id";
+    $sql = "SELECT *, pub_date AS pub_date FROM articles WHERE article_id = :article_id AND category_id = :category_id";
     $st = $conn->prepare($sql);
     $st->bindValue(":article_id", $article_id, PDO::PARAM_INT);
+    $st->bindValue(":category_id", $category_id, PDO::PARAM_STR);
     $st->execute();
     $row = $st->fetch();
 
@@ -46,12 +43,15 @@ class Article {
     else return error_page("articleNotFound");
   }
 
-  public static function getList($numRows=1000000) {
+  public static function getList($category_id = "000") {
+    $numRows=1000000; //세션데이터에 추가;
+
     $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-    $sql = "SELECT SQL_CALC_FOUND_ROWS *, article_id AS id FROM articles
+    $sql = "SELECT SQL_CALC_FOUND_ROWS *, article_id AS id, category_id FROM articles WHERE category_id = :category_id
             ORDER BY id DESC LIMIT :numRows";
 
     $st = $conn->prepare($sql);
+    $st->bindValue(":category_id", $category_id, PDO::PARAM_STR);
     $st->bindValue(":numRows", $numRows, PDO::PARAM_INT);
     $st->execute();
     $list = array();
@@ -70,27 +70,29 @@ class Article {
   }
 
   public function view() {
-    if (is_null($this->article_id)) trigger_error ("Article::view(): Attempt to update an Article object that does not have its ID property set.", E_USER_ERROR);
+    if (is_null($this->article_id) or is_null($this->category_id)) error_page("wrongUID");
     
     $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-    $sql = "UPDATE articles SET views = views + 1 where article_id = :article_id";
-    $st = $conn->prepare ($sql);
+    $sql = "UPDATE articles SET views = views + 1 where article_id = :article_id AND category_id = :category_id";
+    $st = $conn->prepare($sql);
     $st->bindValue(":article_id", $this->article_id, PDO::PARAM_INT);
+    $st->bindValue(":category_id", $this->category_id, PDO::PARAM_STR);
     $st->execute();
 
     $conn = null;
   }
 
-  public function insert() {
-    if (!is_null($this->article_id)) trigger_error ("Article::insert(): Attempt to insert an Article object that already has its ID property set.", E_USER_ERROR);
+  public function insert($category_id) {
+    if (!is_null($this->article_id)) error_page("wrongUID");
 
     $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
     $sql = "INSERT INTO articles (title, content, pub_date, author_id) VALUES (:title, :content, :pub_date, :author_id)";
-    $st = $conn->prepare ($sql);
+    $st = $conn->prepare($sql);
     $st->bindValue(":title", $this->title, PDO::PARAM_STR);
     $st->bindValue(":pub_date", $this->pub_date, PDO::PARAM_INT);
     $st->bindValue(":content", $this->content, PDO::PARAM_STR);
-    $st->bindValue(":author_id", $_SESSION['userid'], PDO::PARAM_STR);
+    $st->bindValue(":author_id", $_SESSION['userid'], PDO::PARAM_STR); //익명게시판 구현때 확인하기
+    $st->bindValue(":category_id", $category_id, PDO::PARAM_STR);
     $st->execute();
     $this->article_id = $conn->lastInsertId();
 
@@ -98,15 +100,16 @@ class Article {
   }
 
   public function update() {
-    if (is_null($this->article_id)) trigger_error ("Article::update(): Attempt to update an Article object that does not have its ID property set.", E_USER_ERROR);
+    if (is_null($this->article_id)) error_page("wrongUID");
    
     $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-    $sql = "UPDATE articles SET pub_date=:pub_date, title=:title, content=:content WHERE article_id = :article_id";
-    $st = $conn->prepare ($sql);
+    $sql = "UPDATE articles SET pub_date=:pub_date, title=:title, content=:content WHERE article_id = :article_id AND category_id = :category_id";
+    $st = $conn->prepare($sql);
     $st->bindValue(":title", $this->title, PDO::PARAM_STR);
     $st->bindValue(":pub_date", $this->pub_date, PDO::PARAM_INT);
     $st->bindValue(":content", $this->content, PDO::PARAM_STR);
     $st->bindValue(":article_id", $this->article_id, PDO::PARAM_INT);
+    $st->bindValue(":category_id", $this->category_id, PDO::PARAM_STR);
     $st->execute();
     #$st->debugDumpParams();
 
@@ -114,12 +117,13 @@ class Article {
   }
 
   public function delete() {
-    if (is_null($this->article_id)) trigger_error ("Article::delete(): Attempt to delete an Article object that does not have its ID property set.", E_USER_ERROR);
+    if (is_null($this->article_id)) error_page("wrongUID");
     elseif(!hasPermissionInCurrentSession($this->author_id)) return error_page("noPermission");
 
     $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-    $st = $conn->prepare ("DELETE FROM articles WHERE article_id = :article_id LIMIT 1");
+    $st = $conn->prepare("DELETE FROM articles WHERE article_id = :article_id AND category_id = :category_id LIMIT 1");
     $st->bindValue(":article_id", $this->article_id, PDO::PARAM_INT);
+    $st->bindValue(":category_id", $this->category_id, PDO::PARAM_STR);
     $st->execute();
 
     $conn = null;

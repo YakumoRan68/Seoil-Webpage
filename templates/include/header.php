@@ -2,19 +2,13 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title><?php echo htmlspecialchars($results['pageTitle'])?></title>
+    <title><?php echo htmlspecialchars($results['pageTitle'] ?? "서뮤니티")?></title>
     <link rel="stylesheet" type="text/css" href="css/styleMain.css" />
   </head>
   <body>
 	<header> <!--시멘틱 태그 : 웹 페이지에서 어디가 헤더인지, 푸터인지 등등 표시해주는 html5 표준 태그; 직접 꾸밀게 아니더라도 태그해서 표시는 해야함. 소위말해 웹 국룰입니다. 반드시 지키세요.-->
 		<div class="header_wrapper">
-			<nav class = "login"> <!--nav(시멘틱 태그) : 문서의 부분 중 현재 페이지 내, 또는 다른 페이지로의 링크를 보여주는 구획을 나타내는 용도 -->
-				<?php 
-					if (isset($_SESSION['userid'])) echo '환영합니다 '.$_SESSION['userid'].'님 | <a href="session.php?action=logout">로그아웃</a>';
-					else echo '<a href="session.php?action=login">로그인</a> | <a href="session.php?action=register">회원가입</a>';
-				?>
-			</nav>
-			<a class="logo" href="." ><img src="images/logoSeoil.png" alt="서일대학교 커뮤니티 로고"/><!--이미지는에 꼭 alt 태그 넣으세요.--></a>
+			<a class="logo" href="." ><img src="images/logoSeoil.png" alt="서뮤니티 로고"/><!--이미지는에 꼭 alt 태그 넣으세요.--></a>
 			<nav class="header_menu"> 
 				<ul> <!--원래 클래스 이름 "nav"였음. 시멘틱 태그를 클래스이름 그대로 쓰지 마세요. 해당 ul을 지칭하는것은 .header_menu > ul 로 할 것.-->
 					<li><a href="#" accesskey="2" title="">커뮤니티</a>
@@ -54,24 +48,38 @@
 					</li>
 				</ul>
 			</nav>
-			<div class="header_slide">
-				<ul>
-					<li><img src="img/banner_test.png" alt="" width="1020" height="130"></li>
-				</ul>
-			</div>
-			<div class="loginBox">
-				<h2>서일 로그인</h2>
-				<form action="session.php?action=login" method="post">
-					<input type="hidden" name="login" value="true" />
-					<div class="loginInputBox">
-						<input type="text" name="userid" required onkeyup="this.setAttribute('value', this.value);"  value="" placeholder="아이디">
-					</div>
-					<div class="loginInputBox">
-						<input type="password" name="userpw" required onkeyup="this.setAttribute('value', this.value);" value="" placeholder="비밀번호">
-					</div>
-					<input type="submit" name="login" value="로그인">
-				</form>
-				<a href="#">아이디/비밀번호 찾기</a> <a href="session.php?action=register">회원가입</a>
+			<div class="header_boxWrapper">
+				<div class="header_slideBox">
+					<ul>
+						<li><img src="images/banner_test.png" alt=""></li>
+					</ul>
+				</div>
+				<div class="profileBox">
+					<?php if(isset($_SESSION['userid'])) : ?>
+						<table class="userlog">
+							<tr>
+								<td colspan = "2"><?php echo $_SESSION['username'].'님'; ?> <a class="logout" href="session.php?action=logout">로그아웃</a> </td>
+							</tr>
+							<tr>
+								<td><a href = "#">내가 쓴 글</a></td>
+								<td><a href = "#">작성댓글</a></td>
+							</tr>
+						</table>
+					<?php else : ?>
+						<h2>서일 로그인</h2>
+						<form action="session.php?action=login" method="post">
+							<input type="hidden" name="login" value="true" />
+							<div class="loginBox">
+								<input type="text" name="userid" required onkeyup="this.setAttribute('value', this.value);"  value="" placeholder="아이디">
+							</div>
+							<div class="loginBox">
+								<input type="password" name="userpw" required onkeyup="this.setAttribute('value', this.value);" value="" placeholder="비밀번호">
+							</div>
+							<input type="submit" name="login" value="로그인">
+						</form>
+						<a href="#">아이디/비밀번호 찾기</a> <a href="session.php?action=register">회원가입</a>
+					<?php endif ?>
+				</div>
 			</div>
 		</div>
 	</header>

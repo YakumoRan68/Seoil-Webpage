@@ -1,8 +1,10 @@
 <?php include "templates/include/header.php" ?>
+  <?php $article = $results['article'] ?>
   <h1><?php echo $results['pageTitle']?></h1>
 
   <form action="session.php?action=<?php echo $results['formAction']?>" method="post">
     <input type="hidden" name="articleId" value="<?php echo $results['article']->article_id ?>"/>
+    <input type="hidden" name="categoryId" value="<?php echo $results['article']->category_id ?>"/>
 
 <?php if (isset($results['errorMessage'])) { ?>
     <div class="errorMessage"><?php echo $results['errorMessage'] ?></div>
@@ -30,6 +32,6 @@
   </form>
 
 <?php if ($results['article']->article_id){ ?>
-  <p><a href="session.php?action=deleteArticle&amp;articleId=<?php echo $results['article']->article_id ?>" onclick="return confirm('정말 이 게시물을 지우겠습니까?')">게시물 삭제</a></p>
+  <p><a href="session.php?action=deleteArticle&amp;categoryId=<?php echo $article->category_id.'&amp;articleId='.$article->article_id?>" onclick="return confirm('정말 이 게시물을 지우겠습니까?')">게시물 삭제</a></p>
 <?php } ?>
 <?php include "templates/include/footer.php" ?>

@@ -1,5 +1,5 @@
 <?php include "templates/include/header.php" ?>
-  <h1>테스트용 게시판</h1>
+<?php include "templates/include/articleheader.php" ?>
   <table>
     <tr>
       <th>글 번호</th>
@@ -10,7 +10,7 @@
       <th>조회수</th>
     </tr>
 <?php foreach ($results['articles'] as $article) { ?>
-    <tr onclick="location='?action=viewArticle&amp;articleId=<?php echo $article->article_id?>'">
+    <tr onclick="location='session.php?action=viewArticle&amp;categoryId=<?php echo $article->category_id.'&amp;articleId='.$article->article_id ?>'">
       <td><?php echo $article->article_id ?></td>
       <td><?php echo $article->author_id ?></td>
       <td><?php echo date("Y-m-d H:i:s", $article->pub_date)?></td>
@@ -23,4 +23,5 @@
 
   <p>총 <?php echo $results['totalRows']?>개의 게시글<?php echo ($results['totalRows'] != 1) ? '들' : '' ?>이 있습니다.</p>
   <p><a href="./">홈페이지로 돌아가기</a></p>
+
 <?php include "templates/include/footer.php" ?>
