@@ -9,6 +9,147 @@
 	overflow: hidden;
 }*/
 
+/*********************************************************************************/
+/* 게시글 작성 페이지                                                                    */
+/*********************************************************************************/
+.form_inline{
+	margin-bottom:10px;
+}
+.form_name{
+	width:90px;
+	color: rgb(0, 0, 0);
+}
+.form_inline .form_control_use{
+	width:200px;
+}
+.form_inline .form_control_textname{
+	width:400px;
+}
+.form_inline .form_control_textcontent{
+	width:800px; 
+	resize:none;
+}
+.form_inline .file_select{
+	width:400px;
+}
+
+.make_content_btn{
+	margin-bottom:30px;
+}
+.make_btn_registration{
+	margin-right:10px; 
+	float:left;
+}
+.make_btn_primary{
+	float:right;
+}
+
+/*********************************************************************************/
+/* 게시판 내용 및 댓글                                                                    */
+/*********************************************************************************/
+
+textarea.comment::placeholder{ 
+	color:lightgray !important;
+ }
+
+.comment_content{
+	height:250px; 
+	background-color: whitesmoke; 
+	margin-bottom: 30px; 
+	padding:10px 15px 10px 15px;
+
+
+}
+.comment_user .comment_user_name{
+	font-weight: bold; 
+	color:black;
+}
+
+.comment_user .comment_user_text{
+	color:black;
+}
+.comment_user .comment_hr{
+	background-color: gray;
+}
+.comment_input{
+	margin:0; 
+	position: relative;
+}
+.comment_input .commet_input_position{
+	position:absolute;
+}
+.comment_input .commet_input_position .comment_make{
+	background-color: white; 
+	width: 720px; 
+	height: 100px; 
+	min-height: 100px; 
+	font-size:12px; 
+	display: inline-block;
+	padding:5px; 
+	margin-top: 0px;
+}
+.comment_input .comment_btn_position{
+	position:absolute;
+	top:25px; 
+	right:30px;
+}
+.comment_input .comment_btn_position.comment_btn{
+	width:65px; 
+	height:65px;
+	display: inline-block; 
+	bottom: 100px;
+	background-color: #3E5A99; 
+	color:white; 
+	font-weight: bold;
+}
+
+
+
+
+
+.container .make_content{
+
+	width:870px; 
+	padding:20px; 
+	padding-left:50px; 
+	margin-top:8px;
+}
+
+.Board_content{
+	height:455px; 
+	border:1px solid white; 
+	margin-top: 30px; 
+	position:relative;
+}
+.Board_title_name{
+	height: 100px;
+	 margin: 15px 15px 0px 15px;
+}
+.Board_text{
+	margin: 0px 15px 0px 15px;
+
+}
+.Board_use_content{
+	margin: 0px 15px 0px 15px;
+}
+.comment_count{
+	height: 20px;position:absolute;
+	left: 10px; bottom: 10px;
+	margin-bottom: 15px;
+	margin-left: 5px;
+}
+.Bord_middle{
+	margin-right: 25px;
+}
+.Bord_middle_hr{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+
+
+
+
 
 /*********************************************************************************/
 /* img slide                                                                    */
