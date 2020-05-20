@@ -979,9 +979,9 @@ a {
 	{
 		width: 961px;
 		height: 588px;
-		margin: 5px 0px;
+		margin: 0px 0px;
 		float: left;
-		border: solid 1px white;
+		
 	}
 
 	.welcome .left
@@ -996,9 +996,9 @@ a {
 	{
 		width: 469px;
 		height: 190px;
-		margin: 1px 1px;
+		margin: 3px 1px 1px 1px;
 		float: right;
-		/*border: solid 1px white;*/
+		border: solid 1px white;
 	}
 	.welcome .box_title
 	{
@@ -1035,17 +1035,17 @@ a {
 	{
 		width: 469px;
 		height: 190px;
-		margin: 0px 1px 1px 1px;
+		margin: 3px 1px 1px 1px;
 		float: right;
-		/*border: solid 1px white;*/
+		border: solid 1px white;
 	}
 	.welcome .box3
 	{
 		width: 469px;
 		height: 190px;
-		margin: 0px 1px 1px 1px;
+		margin: 3px 1px 1px 1px;
 		float: right;
-		/*border: solid 1px white;*/
+		border: solid 1px white;
 	}
 
 	.welcome .right
@@ -1060,25 +1060,25 @@ a {
 	{
 		width: 469px;
 		height: 190px;
-		margin: 1px 1px;
+		margin: 3px 1px 1px 1px;
 		float: right;
-		/*border: solid 1px white;*/
+		border: solid 1px white;
 	}
 	.welcome .box5
 	{
 		width: 469px;
 		height: 190px;
-		margin: 0px 1px 1px 1px;
+		margin: 3px 1px 1px 1px;
 		float: right;
-		/*border: solid 1px white;*/
+		border: solid 1px white;
 	}
 	.welcome .box6
 	{
 		width: 469px;
 		height: 190px;
-		margin: 0px 1px 1px 1px;
+		margin: 3px 1px 1px 1px;
 		float: right;
-		/*border: solid 1px white;*/
+		border: solid 1px white;
 	}
 
 	.welcome .banner
