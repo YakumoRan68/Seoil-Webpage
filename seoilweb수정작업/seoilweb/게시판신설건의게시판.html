@@ -13,7 +13,7 @@ Released   : 20140215
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>글작성</title>
+<title>게시판신설건의게시판</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Quicksand:400,700|Questrial" rel="stylesheet" />
@@ -58,10 +58,10 @@ Released   : 20140215
 				<ul id = 'nav'>
 					<li><a href="#" accesskey="2" title="">커뮤니티</a>
 						<ul>
-							<li><a href="자유게시판.html ">자유게시판</a></li>
-							<li><a href="익명게시판.html ">익명게시판</a></li>
-							<li><a href="새내기게시판.html ">새내기게시판</a></li>
-							<li><a href="졸업생게시판.html">졸업생게시판</a></li>
+							<li><a href="자유게시판.html">자유게시판</a></li>
+							<li><a href="익명게시판.html">익명게시판</a></li>
+							<li><a href="새내기게시판.html">새내기게시판</a></li>
+							<li><a href="졸업생게시판.html ">졸업생게시판</a></li>
 						</ul>
 					</li>
 					<li><a href="#" accesskey="3" title="">강의정보</a>
@@ -86,8 +86,8 @@ Released   : 20140215
 					</li>
 					<li><a href="#" accesskey="6" title="">운영센터</a>
 						<ul>
-							<li><a href="업데이트공지게시판.html">업데이트 공지</a></li>
-							<li><a href="게시판신설건의.html ">게시판 신설건의</a></li>
+							<li><a href="업데이트공지게시판.html ">업데이트 공지</a></li>
+							<li><a href="게시판신설건의게시판.html">게시판 신설건의</a></li>
 							<li><a href="문의사항게시판.html">문의사항</a></li>
 						</ul>
 					</li>
@@ -130,85 +130,141 @@ Released   : 20140215
 <div class="banner">
 	광고배너입니다.
 </div>
-
-
-<form>
-    <div align="left" class="container">
-
-        <div align="left"class="make_content"  >
-            <h1>게시판 글쓰기</h1>
-
-            <hr />
-
-            <div class="form_inline" >
-
-                <label class="form_name" >비밀번호</label>
-
-                <input type="password" class="form_control_use" placeholder="비밀번호를 입력하세요." />
-
-            </div>
-
-
-            <div class="form_inline" >
-
-                <label  class="form_name">글제목</label>
-
-                <input type="text" class="form_control_textname"  placeholder="글 제목을 입력하세요." />
-
-            </div>
-
-            
-
-            <div class="form_inline" >
-
-                <label  class="form_name">글내용</label>
-
-                <textarea class="form_control_textcontent"  rows="10" placeholder="글 내용을 입력하세요."></textarea>
-
-            </div>
-
-            
-
-            <div class="form_inline" >
-
-                <div class="form_group">
-
-                    <label  class="form_name">첨부파일</label>
-
-                </div>
-
-                <div class="form_group">
-
-                    <input type="file" class="file_select" placeholder="첨부파일을 선택하세요." />
-
-                </div>
-
-            </div>
-
-            <hr />
-
-            <div align="center" class="make_content_btn">
-                <input type="button" class="make_btn_registration" value="등록">
-                <input type="button"class="make_btn_primary" value="글목록"onclick="history.back();">
-                
-            </div>
-
-            
-
-        </div>
-
-    </div>
-
-    </form>
-
-
-
-
-
-
-
-
-
+<div class="board_name">
+	<h1>게시판신설 건의 게시판</h1>
+</div>
+<div class="board_list_wrap">
+	<table class="board_list">
+		<caption>게시판 목록</caption>
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th>글쓴이</th>
+				<th>날짜</th>
+				<th>조회수</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>10</td>
+				<td class="tit">
+					<a href="#">게시판 신설문의</a>
+				</td>
+				<td>홍OO</td>
+				<td>20/04/03</td>
+				<td>62</td>
+			</tr>
+			<tr>
+				<td>9</td>
+				<td class="tit">
+					<a href="#">필요한 게시판</a>
+				</td>
+				<td>김OO</td>
+				<td>20/05/03</td>
+				<td>42</td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td class="tit">
+					<a href="#">문의</a>
+				</td>
+				<td>김OO</td>
+				<td>20/05/02</td>
+				<td>22</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td class="tit">
+					<a href="#">요청합니다.</a>
+				</td>
+				<td>김OO</td>
+				<td>20/05/02</td>
+				<td>16</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td class="tit">
+					<a href="#">이런 게시판이 있었으면 좋겠어요.</a>
+				</td>
+				<td>전OO</td>
+				<td>20/05/01</td>
+				<td>11</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td class="tit">
+					<a href="#">게시판문의</a>
+				</td>
+				<td>홍OO</td>
+				<td>20/05/01</td>
+				
+				<td>41</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td class="tit">
+					<a href="#">이런게시판이 있으면 어떨까요?</a>
+				</td>
+				<td>박OO</td>
+				<td>20/04/25</td>
+				<td>56</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td class="tit">
+					<a href="#">게시판 추가해줬으면 좋겠어요</a>
+				</td>
+				<td>이OO</td>
+				<td>20/04/25</td>
+				<td>5</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td class="tit">
+					<a href="#">이런 게시판이 신설 문의합니다.</a>
+				</td>
+				<td>박OO</td>
+				<td>20/04/24</td>
+				<td>26</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td class="tit">
+					<a href="#">게시판 문의</a>
+				</td>
+				<td>김OO</td>
+				<td>20/04/24</td>
+	
+				<td>13</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="paging">
+		<a href="#" class="bt">첫 페이지</a>
+		<a href="#" class="bt">이전 페이지</a>
+		<a href="#" class="num on">1</a>
+		<a href="#" class="num">2</a>
+		<a href="#" class="num">3</a>
+		<a href="#" class="num">4</a>
+		<a href="#" class="num">5</a>
+		<a href="#" class="bt">다음 페이지</a>
+		<a href="#" class="bt">마지막 페이지</a>
+		<button class="create_article"onClick="location.href='분실물글작성페이지.html'">글 작성</button>
+	</div>
+	<div class="text_insert">				
+		<select name="language" >
+			<option value="none">=== 선택 ===</option>
+			<option value="titlename">제목</option>
+			<option value="contentname">내용</option>
+			<option value="person">글쓴이</option>
+			<option value="titlecontent">제목+내용</option>
+		  </select>
+		<input type="text" placeholder="검색어 입력">
+		<button class="btn_insert">검색</button>
+		</div>
+	
+</div>
 
 
 
