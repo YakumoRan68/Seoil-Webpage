@@ -1,6 +1,6 @@
 <?php include "templates/include/header.php"?>
 <?php include "templates/include/articleheader.php" ?>
-<table>
+  <table>
     <tr>
       <th>글 번호</th>
       <th>작성자</th>

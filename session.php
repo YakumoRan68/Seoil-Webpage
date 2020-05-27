@@ -166,6 +166,10 @@ function loadPage() {
       if ($_GET['status'] == "changesSaved") $results['statusMessage'] = "게시글이 저장되었습니다.";
       if ($_GET['status'] == "articleDeleted") $results['statusMessage'] = "게시글이 삭제되었습니다.";
     }
+
+    if($locations[$cnum][3] ?? false) {
+      
+    }
   }
 
   try {

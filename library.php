@@ -24,7 +24,7 @@
       array('terms_of_service', '이용 약관'),
 
 
-      array('testpage', '카테고리 테스트', true),
+      array('testpage', '댓글 테스트', true),
     );
     return $locations;
   }
