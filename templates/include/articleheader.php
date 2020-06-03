@@ -6,4 +6,4 @@
   <div class="statusMessage"><?php echo $results['statusMessage'] ?></div>
 <?php } ?>
 
-<h2 class = "page_name"><?php echo getCategoryMetaData($_GET['location'])[1] ?></h2>
+<h2 class = "page_name"><?php echo getCategoryName($_GET['location'])[1] ?></h2>

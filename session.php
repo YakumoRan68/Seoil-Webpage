@@ -12,7 +12,9 @@ switch ($action) {
   case 'newArticle': newArticle(); break;
   case 'editArticle': editArticle(); break;
   case 'viewArticle': viewArticle(); break;
+  case 'newComment': newComment(); break;
   case 'deleteArticle': deleteArticle(); break;
+  case 'deleteComment': deleteComment(); break;
   default : loadPage();
 }
 
@@ -88,6 +90,7 @@ function register() {
 function viewArticle() {
   if (!isset($_GET["articleId"]) || !isset($_GET['categoryId'])) return error_page("articleNotFound");
 
+  $cnum = (int)$_GET['categoryId'];
   $results = array();
   $results['article'] = Article::getByUID((int)$_GET["articleId"], $_GET['categoryId']);
 
@@ -95,7 +98,33 @@ function viewArticle() {
   else error_page("articleNotFound");
 
   $results['pageTitle'] = $results['article']->title . " | 서뮤니티";
+
+  if(pageMetadata()[$cnum]['loadComments'] ?? false) {
+    $article_ID = $_GET['articleId'];
+
+    $data = Comment::getListFromUID($article_ID, getCategoryKey($cnum));
+    $results['comments'] = $data['results'];
+    $results['totalCommentRows'] = $data['totalRows'];
+  }
+
   require(TEMPLATE_PATH . "/viewArticle.php");
+}
+
+function newComment() {
+  if (isset($_POST['writeComment'])) {
+    $comment = new Comment;
+    $comment->storeFormValues($_POST);
+    $comment->insert($_POST['categoryId'], $_POST['articleId']);
+    goPage(array("action"=>"viewArticle", "categoryId"=>$_POST['categoryId'], "articleId"=>$_POST['articleId']));
+  }
+}
+
+function deleteComment() {
+  if (!$comment = Comment::getListFromUID((int)$_POST['articleId'], $_POST['categoryId'])) return error_page("commentsNotFound");
+  elseif(!hasPermissionInCurrentSession($comment->commenter_id)) return error_page("noPermission");
+
+  $comment->delete($_POST['categoryId'], (int)$_POST['articleId'], $_POST['commentIndex']);
+  goPage(array("action"=>"viewArticle", "categoryId"=>$_POST['categoryId'], "articleId"=>$_POST['articleId']));
 }
 
 function newArticle() {
@@ -151,24 +180,20 @@ function requestList($cnum) { #홈페이지 등에서 여러 페이지 한꺼번
 }
 
 function loadPage() {
-  $locations = getLocation();
+  $pMd = pageMetadata();
   $pagename = $_GET['location'] ?? "homepage";
   $cnum = (int)getCategoryKey($pagename);
-  $results['pageTitle'] = $locations[$cnum][1];
+  $results = array();
+  $results['pageTitle'] = $pMd[$cnum][1];
 
-  if($locations[$cnum][2] ?? false) {
-    $results = array();
+  if($pMd[$cnum]['loadArticles'] ?? false) {
     $data = Article::getList(getCategoryKey($cnum));
     $results['articles'] = $data['results'];
-    $results['totalRows'] = $data['totalRows'];
+    $results['totalArticleRows'] = $data['totalRows'];
 
     if (isset($_GET['status'])) {
       if ($_GET['status'] == "changesSaved") $results['statusMessage'] = "게시글이 저장되었습니다.";
       if ($_GET['status'] == "articleDeleted") $results['statusMessage'] = "게시글이 삭제되었습니다.";
-    }
-
-    if($locations[$cnum][3] ?? false) {
-      
     }
   }
 

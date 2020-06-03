@@ -21,7 +21,7 @@
 <?php } ?>
   </table>
 
-  <p>총 <?php echo $results['totalRows']?>개의 게시글<?php echo ($results['totalRows'] != 1) ? '들' : '' ?>이 있습니다.</p>
+  <p>총 <?php echo $results['totalArticleRows']?>개의 게시글<?php echo ($results['totalArticleRows'] != 1) ? '들' : '' ?>이 있습니다.</p>
   <p><a href="./">홈페이지로 돌아가기</a></p>
 
 <?php include "templates/include/footer.php" ?>

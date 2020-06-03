@@ -12,8 +12,10 @@
     define("HOMEPAGE_NUM_ARTICLES", 5);
     define("ADMIN_USERNAME", "admin");
     define("ADMIN_PASSWORD", "fCyhaxvqYsR5XcP9");
+    include("constants.php");
     include("library.php");
     require(CLASS_PATH . "/article.php");
+    require(CLASS_PATH . "/comment.php");
     
     function handleException($exception) {
       echo "오류 페이지입니다.";

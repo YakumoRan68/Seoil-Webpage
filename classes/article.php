@@ -47,7 +47,7 @@ class Article {
 
     $conn = null;
     if ($row) return new Article($row);
-    else return error_page("articleNotFound");
+    //else return error_page("articleNotFound");
   }
 
   public static function getList($category_id = "000") {
