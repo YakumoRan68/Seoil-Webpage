@@ -158,18 +158,20 @@ textarea.comment::placeholder{
 @media screen { 
 	ul,li{list-style:none;}
 	 .slide{width:850px;height:130px;overflow:hidden;margin:0 auto;padding:0; margin-left: 220px;}
-	 .slide ul{margin:0 auto;padding:0;width:calc(100% * 4);display:flex;animation:slide 8s infinite;} /* slide를 8초동안 진행하며 무한반복 함 */
+	 .slide ul{margin:0 auto;padding:0;width:calc(100% * 4);display:flex;animation:slide 10s infinite;} /* slide를 8초동안 진행하며 무한반복 함 */
 	 .slide li{width:calc(100% / 4);height:130px;}
 	 
 	 @keyframes slide {
 	   0% {margin-left:0;} /* 0 ~ 10  : 정지 */
-	   10% {margin-left:0;} /* 10 ~ 25 : 변이 */
-	   25% {margin-left:-100%;} /* 25 ~ 35 : 정지 */
-	   35% {margin-left:-100%;} /* 35 ~ 50 : 변이 */
+	   10% {margin-left:0;} /* 10 ~ 20 : 변이 */
+	   20% {margin-left:-100%;} /* 20 ~ 30 : 정지 */
+	   30% {margin-left:-100%;} /* 30 ~ 40 : 변이 */
+	   40% {margin-left:-200%;}
 	   50% {margin-left:-200%;}
-	   60% {margin-left:-200%;}
-	   75% {margin-left:-300%;}
-	   85% {margin-left:-300%;}
+	   60% {margin-left:-300%;}
+	   70% {margin-left:-300%;}
+	   80% {margin-left:-400%;}
+	   90% {margin-left:-400%;}
 	   100% {margin-left:0;}
 	 }
  }
