@@ -36,4 +36,8 @@
   function hasPermissionInCurrentSession($userid) {
     return isset($_SESSION['userid']) && ($_SESSION['userid'] == $userid || $_SESSION['userid'] == ADMIN_USERNAME);
   }
+
+  function tab() { #tab 리터럴 문자 반환
+    return '<span class="tab">&#9;</span>';
+  }
 ?>

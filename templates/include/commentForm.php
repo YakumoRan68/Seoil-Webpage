@@ -1,5 +1,3 @@
-댓글 총 <?php echo $results['totalCommentRows'] ?> 개
-
 <table>
   <?php foreach ($results['comments'] as $comment) { ?>
       <tr> <!-- TODO : 댓글부분 클릭하면 대댓글 입력창 뜨게 -->

@@ -7,10 +7,10 @@
   </head>
   <body>
 	<header> <!--시멘틱 태그 : 웹 페이지에서 어디가 헤더인지, 푸터인지 등등 표시해주는 html5 표준 태그; 직접 꾸밀게 아니더라도 태그해서 표시는 해야함. 소위말해 웹 국룰입니다. 반드시 지키세요.-->
-		<div class="header_wrapper">
-			<a class="logo" href="." ><img src="images/logoSeoil.png" alt="서뮤니티 로고"/><!--이미지는에 꼭 alt 태그 넣으세요.--></a>
-			<nav class="header_menu"> 
-				<ul> <!--원래 클래스 이름 "nav"였음. 시멘틱 태그를 클래스이름 그대로 쓰지 마세요. 해당 ul을 지칭하는것은 .header_menu > ul 로 할 것.-->
+		<div id="header">
+			<a class="logo" href="." ><img src="images/logoSeoil.png" alt="서뮤니티 로고"/><!--이미지에는 꼭 alt 태그 넣으세요.--></a>
+			<nav class="header-menu"> 
+				<ul> <!--원래 클래스 이름 "nav"였음. 시멘틱 태그를 클래스이름 그대로 쓰지 마세요. 해당 ul을 지칭하는것은 .header-menu > ul 로 할 것.-->
 					<li><a href="#" accesskey="2" title="">커뮤니티</a>
 						<ul>
 							<li><a href="# ">자유게시판</a></li>
@@ -48,13 +48,17 @@
 					</li>
 				</ul>
 			</nav>
-			<div class="header_boxWrapper">
-				<div class="header_slideBox">
+			<div class="header-box-wrapper">
+				<div class="header-slide-box">
 					<ul>
-						<li><img src="images/banner_test.png" alt=""></li>
+						<li><a href="http://hm.seoil.ac.kr/"><img src="images/슬라이드1.jpg" alt="서일대홈페이지" ></a></li>
+						<li><a href="https://attend.seoil.ac.kr"><img src="images/슬라이드2.jpg" alt="스마트출석부" ></a></li>
+						<li><a href="https://ctl.seoil.ac.kr"><img src="images/슬라이드3.jpg" alt="교수학습지원센터" ></a></li>
+						<li><a href="https://stis.seoil.ac.kr"><img src="images/슬라이드4.jpg" alt="종합정보시스템" ></a></li>
+						<li><a href="https://portal.seoil.ac.kr"><img src="images/슬라이드5.jpg" alt="포털시스템" ></a></li>
 					</ul>
 				</div>
-				<div class="profileBox">
+				<div class="profile-box">
 					<?php if(isset($_SESSION['userid'])) : ?>
 						<table class="userlog">
 							<tr>
@@ -83,5 +87,5 @@
 			</div>
 		</div>
 	</header>
-	<div class = "main_wrapper">
-		
+	<div id = "wrapper">
+		<div class = "ad-banner"></div>
