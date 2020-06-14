@@ -44,6 +44,9 @@
 	>한줄 선택자 뒤에 줄바꿈 한칸, 여러줄 선택자 뒤에는 줄바꿈 두칸 입력해주세요.
 	>예외로 선택자들간의 관계가 깊은게 연속으로 나올경우 가독성을 위해 한줄 속성에 줄바꿈 한칸으로 해도됩니다. 
 
+	- 사이즈 설정할때 패딩이나 margin은 px단위로 하는게 바람직 하지만 그외의 경우엔 em단위를 사용해주세요. 
+	글자크기에 비례한 옵션으로 간격 조정하는것이 훨씬 좋습니다.
+
 	- 선택자 안에 어떤 속성도 없는경우 지워주세요.
 
 	- 전역적으로 설정된 속성이 있을때 같은내용을 중복해서 하위 선택자에 재설정하지 마세요.
@@ -353,72 +356,84 @@ a:hover { text-decoration: none; }
 .content-wrapper { width:95%; }
 
 .article-wrapper {
+	width : 100%;
 	display : flex;
 	flex-direction: column;
-	border:1px solid white; 
-	padding : 15px 15px;
+	border:1px solid whitesmoke; 
+	padding : 10px;
+	overflow : hidden;
 }
 
 .article-metadata { max-height : 100px; }/* 글제목 작성자, 작성일, 조회수 등의 데이터를 표시하는 공간 */
 .article-metadata-middle { margin-right : 25px; } /* 사이 빈공간*/
 .article-text { min-height : 15em; }
+.article-bottom a { float : right; }
 .article-bottom { 
 	min-height : 1em; 
-	display : flex;
+	display : block;
 }
-
-
-
 
 textarea.comment::placeholder { 
 	color:lightgray !important;
 }
 
-.comment-content {
-	height:250px; 
+.comment-wrapper {
+	width : 100%;
 	background-color: whitesmoke; 
-	margin-bottom: 30px; 
-	padding:10px 15px 10px 15px;
-}
-.comment-user .comment-user-name {
-	font-weight: bold; 
-	color:black;
+	padding : 10px;
+	border:1px solid whitesmoke; 
 }
 
-.comment-user .comment-user-text {
-	color:black;
+.comment-wrapper table { 
+	width : 100%; 
+	table-layout: fixed;
 }
-.comment-user .comment-hr {
-	background-color: gray;
+
+.comment-header * {	color : black; }
+.comment-header input { margin-left : 15px; }
+
+.comment-date { 
+	padding-left : 15px; 
+	width : 150px;
+}
+
+.comment-user-name { 
+	width: 80px;
+	font-weight: bold; 
+}
+
+.comment-content-wrapper { 
+	padding : 3px 0;
+}
+
+.comment-contour {
+	border-bottom : 1px solid grey;
+	padding-bottom : 3px;
+}
+
+.comment-content {
+	color:black;
+	min-height : 1em;
+}
+
+.comment-form-wrapper {
+	margin-top : 15px;
+	display: block;
+	position : relative;
+	width : 100%;
 }
 .comment-input {
-	margin:0; 
-	position: relative;
-}
-.comment-input .commet-input-position {
-	position:absolute;
-}
-.comment-input .commet-input-position .comment-make {
 	background-color: white; 
-	width: 720px; 
-	height: 100px; 
-	min-height: 100px; 
-	font-size:12px; 
-	display: inline-block;
-	padding:5px; 
-	margin-top: 0px;
-}
-.comment-input .comment-btn-position {
-	position:absolute;
-	top:25px; 
-	right:30px;
+	color: black;
+	width: 80%; 
+	font-size:.75em; 
+	padding : 5px; 
+	border-radius: 0;
 }
 
-.comment-btn {
-	width:65px; 
-	height:65px;
-	display: inline-block; 
-	bottom: 100px;
+.comment-submit {
+	width:80px; 
+	height:80px;
 	background-color: #3E5A99; 
 	color:white; 
 	font-weight: bold;
@@ -1229,17 +1244,6 @@ a {
 		/*border: 1px solid red;  임시선 */
 	}
 
-/*********************************************************************************/
-/* Content                                                                       */
-/*********************************************************************************/
-
-	#content
-	{
-		float: left;
-		width: 700px;
-		padding-right: 100px;
-		border-right: 1px solid rgba(0,0,0,.1);
-	}
 
 /*********************************************************************************/
 /* Sidebar                                                                       */
