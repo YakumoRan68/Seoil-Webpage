@@ -5,5 +5,3 @@
 <?php if (isset($results['statusMessage'])) { ?>
   <div class="statusMessage"><?php echo $results['statusMessage'] ?></div>
 <?php } ?>
-
-<h2 class = "page-name"><?php echo getCategoryName($_GET['location'])[1] ?></h2>

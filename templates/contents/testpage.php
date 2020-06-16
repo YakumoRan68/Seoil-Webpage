@@ -1,5 +1,5 @@
 <?php include "templates/include/header.php"?>
-<?php include "templates/include/articleheader.php" ?>
+<?php include "templates/include/articleinclude.php" ?>
   <table>
     <tr>
       <th>글 번호</th>

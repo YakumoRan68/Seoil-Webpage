@@ -1,4 +1,5 @@
-</div><!--header의 main-wrapper의 닫는 지점-->
+  </div>
+</div>
 
 <footer> <!-- 시멘틱 태그 -->
   <div id="footer">

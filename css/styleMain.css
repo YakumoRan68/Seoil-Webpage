@@ -60,6 +60,7 @@
 	>이외에 명명규칙을 최대한 부합하게 이름지어주세요.
 
 	- 이미지 폴더이름 img -> images
+	- 게시판, 게시물을 표현하는 단어 board -> article
 
 	- 광고의 크기는 https://ko.wikipedia.org/wiki/%EC%9B%B9_%EB%B0%B0%EB%84%88 여기에있는 이미지를 참고하여 크기가 가장 근사한 수치로 재조정했습니다.
 
@@ -77,7 +78,7 @@
   list-style: none;
   color: #E5EEFF;
   font-size: 12pt;
-  line-height : 1.5em;
+	line-height : 1.5em;
 }
 
 html { background: #334467; }
@@ -94,10 +95,178 @@ h1 { font-size : 2em; }
 h2 { font-size : 1.5em; }
 h3 { font-size : 1.17em; }
 p {	line-height: 180%; }
-a { color: #16A085; }
+caption { display: none; }
+button { color : black; }
 a:hover { text-decoration: none; }
+a { 
+	text-decoration: none;
+	color: inherit;
+}
 
 .tab { white-space: pre; }
+
+:-ms-input-placeholder, ::-webkit-input-placeholder, ::-moz-placeholder {color: #a8a8a8;}
+
+
+/*********************************************************************************/
+/* Form Style                                                                    */
+/*********************************************************************************/
+/* 무슨 용도인지 모르겠습니다. 
+form label {
+	display: block;
+	text-align: left;
+	margin-bottom: 0.5em;
+}
+
+form .submit {
+	margin-top: 2em;
+	line-height: 1.5em;
+	font-size: 1.3em;
+}
+
+form input.g,
+form select,
+form textarea {
+	position: relative;
+	-webkit-appearance: none;
+	display: block;
+	border: 0;
+	background: #fff;
+	background: rgba(255,255,255,0.75);
+	width: 100%;
+	border-radius: 0.50em;
+	margin: 1em 0em;
+	padding: 1.50em 1em;
+	box-shadow: inset 0 0.1em 0.1em 0 rgba(0,0,0,0.05);
+	border: solid 1px rgba(0,0,0,0.15);
+	-moz-transition: all 0.35s ease-in-out;
+	-webkit-transition: all 0.35s ease-in-out;
+	-o-transition: all 0.35s ease-in-out;
+	-ms-transition: all 0.35s ease-in-out;
+	transition: all 0.35s ease-in-out;
+	font-size: 1em;
+	outline: none;
+}
+
+form input.text:focus,
+form select:focus,
+form textarea:focus
+{
+	box-shadow: 0 0 2px 1px #E0E0E0;
+	background: #fff;
+}
+
+form textarea
+{
+	min-height: 12em;
+}
+
+form .formerize-placeholder
+{
+	color: #555 !important;
+}
+
+form ::-webkit-input-placeholder
+{
+	color: #555 !important;
+}
+
+form :-moz-placeholder
+{
+	color: #555 !important;
+}
+
+form ::-moz-placeholder
+{
+	color: #555 !important;
+}
+
+form :-ms-input-placeholder
+{
+	color: #555 !important;
+}
+
+form ::-moz-focus-inner
+{
+	border: 0;
+}
+
+
+/*********************************************************************************/
+/* Image Style                                                                   */
+/*********************************************************************************/
+
+/* 
+
+	.image
+	{
+		display: inline-block;
+		border: 1px solid rgba(0,0,0,.1);
+	}
+	
+	.image img
+	{
+		display: block;
+		width: 100%;
+	}
+	
+	.image-full
+	{
+		display: block;
+		width: 100%;
+		margin: 0 0 3em 0;
+	}
+	
+	.image-left
+	{
+		float: left;
+		margin: 0 2em 2em 0;
+	}
+	
+	.image-centered
+	{
+		display: block;
+		margin: 0 0 2em 0;
+	}
+	
+	.image-centered img
+	{
+		margin: 0 auto;
+		width: auto;
+	}
+
+*/
+
+/*********************************************************************************/
+/* Button Style                                                                  */
+/*********************************************************************************/
+/*
+.button
+{
+	display: inline-block;
+	margin-top: 2em;
+	padding: 0.8em 2em;
+	background: #3E5A99;
+	line-height: 1.8em;
+	letter-spacing: 1px;
+	text-decoration: none;
+	font-size: 1em;
+	color: #FFF;
+}
+
+.button:before
+{
+	display: inline-block;
+	background: #8DCB89;
+	margin-right: 1em;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 20px;
+	text-align: center;
+	color: #272925;
+}
+
 
 /*********************************************************************************/
 /* 헤더 메뉴, 헤더 로고                                                            */
@@ -338,7 +507,7 @@ a:hover { text-decoration: none; }
 
 #container {
 	order : -1;
-	width: 75%;
+	width: 70%;
 }
 
 .ad-banner {
@@ -349,11 +518,13 @@ a:hover { text-decoration: none; }
 	border: 1px solid white;
 }
 
-/*********************************************************************************/
-/* 게시글 보기 내용 및 댓글 (board 이름을 article으로 바꿨습니다)*/
-/*********************************************************************************/
+.page-name {
+	margin-bottom : 30px;
+}
 
-.content-wrapper { width:95%; }
+/*********************************************************************************/
+/* 게시글 */
+/*********************************************************************************/
 
 .article-wrapper {
 	width : 100%;
@@ -373,14 +544,14 @@ a:hover { text-decoration: none; }
 	display : block;
 }
 
-textarea.comment::placeholder { 
-	color:lightgray !important;
-}
+/*********************************************************************************/
+/* 댓글 */
+/*********************************************************************************/
 
 .comment-wrapper {
 	width : 100%;
-	background-color: whitesmoke; 
 	padding : 10px;
+	background-color: whitesmoke; 
 	border:1px solid whitesmoke; 
 }
 
@@ -417,10 +588,12 @@ textarea.comment::placeholder {
 }
 
 .comment-form-wrapper {
-	margin-top : 15px;
 	display: block;
 	position : relative;
 	width : 100%;
+	padding : 10px;
+	background-color: whitesmoke; 
+	border:1px solid whitesmoke; 
 }
 .comment-input {
 	background-color: white; 
@@ -430,6 +603,9 @@ textarea.comment::placeholder {
 	padding : 5px; 
 	border-radius: 0;
 }
+.comment-input::placeholder { 
+	color:lightgray !important;
+}
 
 .comment-submit {
 	width:80px; 
@@ -437,6 +613,91 @@ textarea.comment::placeholder {
 	background-color: #3E5A99; 
 	color:white; 
 	font-weight: bold;
+}
+
+/*********************************************************************************/
+/* 게시판                                                                  */
+/*********************************************************************************/	
+.article-list {
+	width: 100%;
+	border-top: 2px solid #ccc;
+}
+
+.article-list tr { border-bottom: 1px solid #ccc; }
+.article-list td { text-align: center; }
+.article-list th, .article-list td { 
+	padding: 10px;
+  font-size: 14px;
+}
+
+.create-article {
+	float : right;
+	margin : 20px 5px 0 0;
+}
+
+.article-navigation {
+	margin-top : 20px;
+	left : 3%;
+	position : relative;
+	display : flex;
+	flex-direction: column;
+	flex-wrap : wrap;
+	align-content : center;
+	align-items : center;
+}
+
+.article-paging { font-size: 0; }
+.article-paging a {
+	display: inline-block;
+	margin-left: 10px;
+	padding: 5px 10px;
+	border-radius: 100px;
+	font-size: 12px;
+}
+.article-paging a:first-child { margin-left: 0; }
+.article-paging a.page-move {
+	border: 1px solid #eee;
+	background: #eee;
+	color: #292929;
+}
+.article-paging a.num {
+	border: 1px solid #ccc;
+	font-weight: 600;
+	color:#ccc;
+}
+.article-paging a.num-now {
+	background:#ccc;
+	color: #fff;
+}
+
+
+.article-search {
+	width : 31em;
+	border: 1px solid #1ABC9C;
+	background: #FFFFFF;
+	margin-top: 10px;
+	display:flex;
+	justify-content: space-between;
+	height: 1.5em;
+}
+
+.article-search input {
+	font-size: 16px;
+	height: 1.5em;
+	width : 20em;
+	border:  1px solid black;
+	outline: none;
+}
+.article-search button {
+	width: 50px;
+	height: 1.5em;
+	border: 0;
+	background: #16A085;
+	outline: none;
+	color: #FFFFFF;
+}
+.article-search select[name="language"] {
+	height: 1.5em;
 }
 
 /*********************************************************************************/
@@ -481,140 +742,6 @@ textarea.comment::placeholder {
 	float:right;
 }
 
-
-
-
-	
-/*********************************************************************************/
-/* Form Style                                                                    */
-/*********************************************************************************/
-
-form label {
-	display: block;
-	text-align: left;
-	margin-bottom: 0.5em;
-}
-
-form .submit {
-	margin-top: 2em;
-	line-height: 1.5em;
-	font-size: 1.3em;
-}
-
-form input.text,
-form select,
-form textarea {
-	position: relative;
-	-webkit-appearance: none;
-	display: block;
-	border: 0;
-	background: #fff;
-	background: rgba(255,255,255,0.75);
-	width: 100%;
-	border-radius: 0.50em;
-	margin: 1em 0em;
-	padding: 1.50em 1em;
-	box-shadow: inset 0 0.1em 0.1em 0 rgba(0,0,0,0.05);
-	border: solid 1px rgba(0,0,0,0.15);
-	-moz-transition: all 0.35s ease-in-out;
-	-webkit-transition: all 0.35s ease-in-out;
-	-o-transition: all 0.35s ease-in-out;
-	-ms-transition: all 0.35s ease-in-out;
-	transition: all 0.35s ease-in-out;
-	font-size: 1em;
-	outline: none;
-}
-
-form input.text:focus,
-form select:focus,
-form textarea:focus
-{
-	box-shadow: 0 0 2px 1px #E0E0E0;
-	background: #fff;
-}
-
-form textarea
-{
-	min-height: 12em;
-}
-
-form .formerize-placeholder
-{
-	color: #555 !important;
-}
-
-form ::-webkit-input-placeholder
-{
-	color: #555 !important;
-}
-
-form :-moz-placeholder
-{
-	color: #555 !important;
-}
-
-form ::-moz-placeholder
-{
-	color: #555 !important;
-}
-
-form :-ms-input-placeholder
-{
-	color: #555 !important;
-}
-
-form ::-moz-focus-inner
-{
-	border: 0;
-}
-
-
-
-/*********************************************************************************/
-/* Image Style                                                                   */
-/*********************************************************************************/
-
-/* 무슨 용도인지 모르겠습니다. 게시판 내에 들어갈 이미지를 쓰는건지, 배너이미지에 쓰이는 건지 정확하게 명명을 해주세요.
-
-	.image
-	{
-		display: inline-block;
-		border: 1px solid rgba(0,0,0,.1);
-	}
-	
-	.image img
-	{
-		display: block;
-		width: 100%;
-	}
-	
-	.image-full
-	{
-		display: block;
-		width: 100%;
-		margin: 0 0 3em 0;
-	}
-	
-	.image-left
-	{
-		float: left;
-		margin: 0 2em 2em 0;
-	}
-	
-	.image-centered
-	{
-		display: block;
-		margin: 0 0 2em 0;
-	}
-	
-	.image-centered img
-	{
-		margin: 0 auto;
-		width: auto;
-	}
-
-*/
-
 /*********************************************************************************/
 /* Social Icon Styles                                                            */
 /*********************************************************************************/
@@ -653,58 +780,6 @@ form ::-moz-focus-inner
 		height: 40px;
 		line-height: 40px;
 		text-align: center;
-		color: rgba(255,255,255,.5);
-	}
-	
-
-/*********************************************************************************/
-/* Button Style                                                                  */
-/*********************************************************************************/
-
-	.button
-	{
-		display: inline-block;
-		margin-top: 2em;
-		padding: 0.8em 2em;
-		background: #3E5A99;
-		line-height: 1.8em;
-		letter-spacing: 1px;
-		text-decoration: none;
-		font-size: 1em;
-		color: #FFF;
-	}
-	
-	.button:before
-	{
-		display: inline-block;
-		background: #8DCB89;
-		margin-right: 1em;
-		width: 40px;
-		height: 40px;
-		line-height: 40px;
-		border-radius: 20px;
-		text-align: center;
-		color: #272925;
-	}
-		
-/*********************************************************************************/
-/* Heading Titles                                                                */
-/*********************************************************************************/
-
-	.title
-	{
-		margin-bottom: 3em;
-	}
-	
-	.title h2
-	{
-		font-size: 2.8em;
-		color: #FFF;
-	}
-	
-	.title .byline
-	{
-		font-size: 1.1em;
 		color: rgba(255,255,255,.5);
 	}
 
@@ -940,136 +1015,6 @@ form ::-moz-focus-inner
     border-radius: 4px;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
-
-/*********************************************************************************/
-/* board                                                                  */
-/*********************************************************************************/	
-table {
-    border-collapse: collapse;
-}
-
-caption {
-    display: none;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.board-list-wrap {
-	padding: 60px;
-	margin-left: 80px;
-	margin-right: 350px;
-}
-
-.board-list {
-    width: 100%;
-    border-top: 2px solid #ccc;
-}
-
-.board-list tr {
-    border-bottom: 1px solid #ccc;
-}
-
-.board-list th,
-.board-list td {
-    padding: 10px;
-    font-size: 14px;
-}
-
-.board-list td {
-    text-align: center;
-}
-
-.board-list .tit {
-    text-align: left;
-}
-
-.board-list .tit:hover {
-    text-decoration: underline;
-}
-
-.board-list-wrap .paging {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 0;
-}
-.board-list-wrap .paging a {
-    display: inline-block;
-    margin-left: 10px;
-    padding: 5px 10px;
-    border-radius: 100px;
-    font-size: 12px;
-}
-.board-list-wrap .paging a:first-child {
-    margin-left: 0;
-}
-
-.board-list-wrap .paging a.bt {
-    border: 1px solid #eee;
-	background: #eee;
-	color: #292929;
-}
-
-.board-list-wrap .paging a.num {
-    border: 1px solid #ccc;
-    font-weight: 600;
-    color:#ccc;
-}
-
-.board-list-wrap .paging a.num.on {
-    background:#ccc;
-    color: #fff;
-}
-
-.board-name {
-	margin-left: 140px;
-	
-}
-
-
-	.board-list-wrap .paging .create-article { float:right;margin-right: 9px;}
-	
-:-ms-input-placeholder {color: #a8a8a8;}
-::-webkit-input-placeholder {color: #a8a8a8;}
-::-moz-placeholder {color: #a8a8a8;}
-
-.text-insert {
-	height: 25px;
-	width: 490px;
-	border: 1px solid #1ABC9C;
-	background: #FFFFFF;
-	margin-top: 10px;
-	margin-left: 230px;
-}
-
-.text-insert input[type="text"] {
-	font-size: 16px;
-	width: 310px;
-	height: 0px;
-	padding: 11px;
-	border:  1px solid black;
-	
-	outline: none;
-	float: left;
-	}
-	.btn-insert {
-		width: 50px;
-		height: 100%;
-		border: 0px;
-		background: #16A085;
-		outline: none;
-		float: right;
-		color: #FFFFFF;
-	}
-	.text-insert select[name="language"]
-	{
-		height: 25px;
-		
-		float: left;
-	}
-
 /*********************************************************************************/
 /* Banner                                                                        */
 /*********************************************************************************/
