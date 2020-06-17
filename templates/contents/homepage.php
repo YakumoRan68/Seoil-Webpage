@@ -1,11 +1,30 @@
 <?php include "templates/include/header.php";?>
-  <?php ?>
+  <div class = "homepage-articles-wrapper"> 
+      <?php #홈페이지에서 게시글 가져오는 갯수 최대수치 정하고 css에서 한 게시판 블럭크기 정해야함.
+      for($i = 0; $i < count($results) - 1; $i++) : #count($array) - 1 : empty array($results = array())도 1개로 카운트.
 
-  <!--TODO : 홈페이지 작성(프론트) -->
-  홈페이지
+      $pMd = PAGE_METADATA;
+      $key = $results[$i]['key'];
+      $location_name = $pMd[(int)$key][0];
+      $articles_name = $pMd[(int)$key][1];
+      ?>
 
-  <p><a href="session.php?location=test">게시판 테스트</a></p>
-  <p><a href="session.php?location=testpage">게시판 테스트2</a></p>
+      <div class = "homepage-articles-box">
+        <div class = "homepage-articles-name">
+          <a href = "http://localhost/session.php?location=<?php echo $location_name?>" >
+            <h2><?php echo $articles_name ?></h2>
+          </a>
+        </div>
+        <table class = "homepage-articles-list">
+          <?php foreach ($results[$i]['articles'] as $article) { ?>
+            <tr onclick="location='session.php?action=viewArticle&amp;categoryId=<?php echo $article->category_id.'&amp;articleId='.$article->article_id ?>'">
+              <td><?php echo htmlspecialchars($article->title)?></td>
+            </tr>
+          <?php } ?>
+          </table>
+      </div>
+      <?php endfor ?>
+  </div>
 <?php include "templates/include/footer.php" ?>
 
 <!-- TODO(백엔드) 

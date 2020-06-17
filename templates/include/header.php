@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title><?php echo htmlspecialchars($results['pageTitle'] ?? "서뮤니티")?></title>
-    <link rel="stylesheet" type="text/css" href="css/styleMain.css" />
+    <link rel="stylesheet" type="text/css" href="css/style_main.css" />
   </head>
   <body>
 	<header> <!--시멘틱 태그 : 웹 페이지에서 어디가 헤더인지, 푸터인지 등등 표시해주는 html5 표준 태그; 직접 꾸밀게 아니더라도 태그해서 표시는 해야함. 소위말해 웹 국룰입니다. 반드시 지키세요.-->
@@ -88,5 +88,5 @@
 		</div>
 	</header>
 	<div id = "wrapper">
-		<div class = "ad-banner"></div>
+		<div class = "ad-banner"><a href="#"><img src="images/banner_sample.jpg" alt="광고배너" ></a></div>
 		<div id = "container">

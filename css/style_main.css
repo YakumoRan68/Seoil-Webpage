@@ -23,7 +23,7 @@
   - body의 width좀 늘렸습니다. 답답해서요.
 */
 
-/* 0612 comment
+/* 0612 ~ 0618 comment
 	많은 시간들여서 css 합쳤습니다. 제발, 이제 서로 다른 깃페이지 쓰지 않았으면 좋겠습니다. 제발요.
 	이제부터 추가작업하실거 반드시 이 메인페이지 기준으로 브랜치 만드셔서 작업하셔야합니다, 안그러면 이건 팀플레이가 아니에요.
 	전체적으로 이 css 기본구성은 전역적인 선택자(*, html, body, h1, a, p, ol, ul 등등)은 상단에 배치하고 이후 세부 컨텐트들 주석달아서 적어놓았습니다.
@@ -61,6 +61,7 @@
 
 	- 이미지 폴더이름 img -> images
 	- 게시판, 게시물을 표현하는 단어 board -> article
+	- 홈페이지를 표현하는 단어 welcome -> homepage
 
 	- 광고의 크기는 https://ko.wikipedia.org/wiki/%EC%9B%B9_%EB%B0%B0%EB%84%88 여기에있는 이미지를 참고하여 크기가 가장 근사한 수치로 재조정했습니다.
 
@@ -602,6 +603,7 @@ form ::-moz-focus-inner
 	font-size:.75em; 
 	padding : 5px; 
 	border-radius: 0;
+	height : 7em;
 }
 .comment-input::placeholder { 
 	color:lightgray !important;
@@ -701,6 +703,39 @@ form ::-moz-focus-inner
 }
 
 /*********************************************************************************/
+/* 홈페이지                                                                       */
+/*********************************************************************************/
+
+.homepage-articles-wrapper {
+	width : 100%;
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:space-between;
+	align-content:flex-start;
+}
+
+.homepage-articles-box {
+	width : 49.5%;
+	border : 1px solid white;
+	margin-bottom : 0.5%;
+}
+
+.homepage-articles-name { border-bottom : 1.5px solid white; }
+
+.homepage-articles-list td { color: #C6C2C4; }
+.homepage-articles-list td:before { 
+	position : relative;
+	top : 4px;
+	content : "·";
+	font-size: 30px; 
+	line-height: 0px;
+	color: white; 
+	margin: 5px 5px 0 7px;
+}
+
+
+
+/*********************************************************************************/
 /* 게시글 작성 페이지                                                                    */
 /*********************************************************************************/
 .form-inline {
@@ -782,83 +817,8 @@ form ::-moz-focus-inner
 		text-align: center;
 		color: rgba(255,255,255,.5);
 	}
-
-/*********************************************************************************/
-/* Logo                                                                          */
-/*********************************************************************************/
-
-	
-	#logo h1
-	{
-		display: inline-block;
-		margin-bottom: 0.20em;
-		padding: 0.20em 0.9em;
-		font-size: 2.5em;
-	}
-	
-	#logo a
-	{
-		text-decoration: none;
-		color: #FFF;
-	}
-	
-	#logo span
-	{
-		padding-right: 0.5em;
-		text-transform: uppercase;
-		font-size: 0.90em;
-		color: rgba(255,255,255,1);
-	}
-
-	#logo span a
-	{
-		color: rgba(255,255,255,0.8);
-	}
-	
 	
 
-/*********************************************************************************/
-/* Menu                                                                          */
-/*********************************************************************************/
-
-	#menu
-	{
-		margin-top: 15px;
-	}
-	
-	#menu ul
-	{
-		display: inline-block;
-		padding: 0em 2em;
-		text-align: center;
-	}
-	
-	#menu li
-	{
-		display: inline-block;
-	}
-	
-	#menu li a, #menu li span
-	{
-		display: inline-block;
-		padding: 1.3em 1.5em;
-		text-decoration: none;
-		font-size: 1em; /*0.90em*/
-		font-weight: 600;
-		text-transform: uppercase;
-		outline: 0;
-		color: #FFF;
-	}
-	
-	#menu li:hover a, #menu li.active a, #menu li.active span
-	{
-		background: #3E5A99;
-	}
-	
-	#menu .current-page-item a
-	{
-		color: #FFF;
-	}
 
 /*********************************************************************************/
 /* Sign                                                                 */
@@ -1015,10 +975,6 @@ form ::-moz-focus-inner
     border-radius: 4px;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
-/*********************************************************************************/
-/* Banner                                                                        */
-/*********************************************************************************/
-
 
 /*********************************************************************************/
 /* Wrapper                                                                       */
@@ -1040,153 +996,6 @@ form ::-moz-focus-inner
 		overflow: hidden;
 		padding: 5em 0em;
 		text-align: center;
-	}
-
-/*********************************************************************************/
-/* Welcome                                                                       */
-/*********************************************************************************/
-
-	.welcome
-	{
-		overflow: hidden;
-		width: 1522px;
-		height: 600px;
-		/*padding: 0px ;*/
-		/*text-align: center;*/
-		/*border: solid 1px greenyellow;*/ 
-	}
-
-	.welcome .preview
-	{
-		width: 961px;
-		height: 588px;
-		margin: 0px 0px;
-		float: left;
-		
-	}
-
-	.welcome .left
-	{
-		width: 474px;
-		height: 580px;
-		margin: 3px 3px 3px 7px;
-		float: left;
-		/*border: solid 1px red;*/
-	}
-	.welcome .box1
-	{
-		width: 469px;
-		height: 190px;
-		margin: 3px 1px 1px 1px;
-		float: right;
-		border: solid 1px white;
-	}
-	.welcome .box-title
-	{
-		width: 462px;
-		/*float: left;*/
-		border-bottom: solid 1.5px white;
-		color: white;
-	}
-	.welcome .box-title a
-	{
-		text-decoration: none;
-		color: #FFF;
-	}
-	.welcome .box-list
-	{
-		width: 460px;
-		height: 158px;
-		margin-top: 3px;
-		color: white;
-		/*border: solid 1px white;*/
-	}
-	.welcome .list
-	{
-		margin: 4px 0px 0px 4px;
-		font-size: 13px;
-		line-height: 22px;
-		text-decoration: none; 
-	}
-	.welcome .list a { color: rgb(221, 221, 221); }
-	.welcome .list a:before { display: inline-block; font-size: 25px; line-height: 0px; content: "."; color: white; margin: 5px 5px 0 5px;}
-	.welcome .txt { display:inline-block; }
-	
-	.welcome .box2
-	{
-		width: 469px;
-		height: 190px;
-		margin: 3px 1px 1px 1px;
-		float: right;
-		border: solid 1px white;
-	}
-	.welcome .box3
-	{
-		width: 469px;
-		height: 190px;
-		margin: 3px 1px 1px 1px;
-		float: right;
-		border: solid 1px white;
-	}
-
-	.welcome .right
-	{
-		width: 474px;
-		height: 580px;
-		margin: 3px 3px 3px 0px;
-		float: right;
-		/*border: solid 1px red;*/
-	}
-	.welcome .box4
-	{
-		width: 469px;
-		height: 190px;
-		margin: 3px 1px 1px 1px;
-		float: right;
-		border: solid 1px white;
-	}
-	.welcome .box5
-	{
-		width: 469px;
-		height: 190px;
-		margin: 3px 1px 1px 1px;
-		float: right;
-		border: solid 1px white;
-	}
-	.welcome .box6
-	{
-		width: 469px;
-		height: 190px;
-		margin: 3px 1px 1px 1px;
-		float: right;
-		border: solid 1px white;
-	}
-
-	.welcome .banner
-	{
-		width: 210px;
-		height: 442px;
-		margin: 5px 20px 5px 0px;
-		float: right;
-		border: 1px solid white;
-	}
-	
-	.welcome a,
-	.welcome strong
-	{
-		color: #C6C2C4;
-	}
-
-/*********************************************************************************/
-/* Page                                                                          */
-/*********************************************************************************/
-
-	.page-wrapper
-	{
-		overflow: hidden;
-		
-		/*text-align: center;*/
-		/*border: 1px solid red;  임시선 */
 	}
 
 

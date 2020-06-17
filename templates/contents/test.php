@@ -28,7 +28,9 @@
 </tbody>
 </table>
 
-<button class="create-article" onClick="location='분실물글작성페이지.html'">글 작성</button>
+<?php if(canWriteArticle((int)$article->category_id)) : ?>
+  <button class="create-article" onClick="location='session.php?action=newArticle&amp;categoryId=<?php echo $article->category_id.'&amp;articleId='.$article->article_id?>'">글 작성</button>
+<?php endif ?>
 
 <div class = "article-navigation">
   <div class = "article-paging"> <!-- TODO : 페이징 작업 -->

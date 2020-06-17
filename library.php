@@ -37,6 +37,12 @@
     return isset($_SESSION['userid']) && ($_SESSION['userid'] == $userid || $_SESSION['userid'] == ADMIN_USERNAME);
   }
 
+  function canWriteArticle($cnum) {
+    return true;
+    if(isset($_SESSION['userid'])) return ((pageMetadata()[$cnum]['adminArticle'] ?? false) && $_SESSION['userid'] == 'admin') ;
+    return pageMetadata()[$cnum]['allowAnnonymousArticle'] ?? false;
+  }
+
   function tab() { #tab 리터럴 문자 반환
     return '<span class="tab">&#9;</span>';
   }

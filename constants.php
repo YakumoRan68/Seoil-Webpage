@@ -1,7 +1,7 @@
 <?php
   #TODO : json파일 불러오는 형식으로 바꾸기
   define('PAGE_METADATA', array( 
-    array('test', '테스트게시판', 'loadArticles' => true, 'loadComments' => true),
+    array('test', '테스트 게시판', 'loadArticles' => true, 'loadComments' => true),
     array('homepage', '서뮤니티', 'loadArticles' => true),
     array('update_notice', '업데이트 공지', 'loadArticles' => true),
     array('article_support', '게시판 관련 문의', 'loadArticles' => true),
@@ -23,6 +23,9 @@
     array('privacy_policy', '개인정보 정책'),
     array('terms_of_service', '이용 약관'),
 
-    array('testpage', '댓글 테스트', 'loadArticles' => true, 'loadComments' => true, 'allowAnnonymous' => true),
-  ))
+    array('testpage', '테스트 게시판 2', 'loadArticles' => true, 'loadComments' => true, 'allowAnnonymousArticle' => true, 'allowAnnonymousComment' => true),
+    #'adminArticle', 'adminAccess'
+  ));
+
+  define('ARTICLES_LOAD_FOR_HOMEPAGE', array('test', 'testpage', 'test', 'test', 'test', 'test'));
 ?>

@@ -175,10 +175,6 @@ function deleteArticle() {
   goPage(array("status"=>"articleDeleted", "location"=>getFileName($_GET['categoryId'])));
 }
 
-function requestList($cnum) { #홈페이지 등에서 여러 페이지 한꺼번에 요청
-
-}
-
 function loadPage() {
   $pMd = pageMetadata();
   $pagename = $_GET['location'] ?? "homepage";
@@ -186,7 +182,14 @@ function loadPage() {
   $results = array();
   $results['pageTitle'] = $pMd[$cnum][1];
 
-  if($pMd[$cnum]['loadArticles'] ?? false) {
+  if($pagename == "homepage") {
+    foreach(ARTICLES_LOAD_FOR_HOMEPAGE as $k => $v) {
+      $key = getCategoryKey($v);
+      $data = Article::getList($key);
+      $results[$k]['articles'] = $data['results'];
+      $results[$k]['key'] = $key;
+    }
+  } elseif($pMd[$cnum]['loadArticles'] ?? false) {
     $data = Article::getList(getCategoryKey($cnum));
     $results['articles'] = $data['results'];
     $results['totalArticleRows'] = $data['totalRows'];
