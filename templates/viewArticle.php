@@ -3,7 +3,7 @@
   $article = $results['article'];
   $location = pageMetadata()[(int)$article->category_id]; 
   $loadComment = pageMetadata()[(int)$article->category_id]['loadComments'] ?? false;
-  $canWriteComment = ($_SESSION['userid'] ?? false) || (pageMetadata()[(int)$_GET['categoryId']]['allowAnnonymous'] ?? false);
+  $canWriteComment = ($_SESSION['userid'] ?? false) || (pageMetadata()[(int)$_GET['categoryId']]['allowAnnonymousComment'] ?? false);
 ?>
 
 <div class = "page-name">
@@ -69,13 +69,10 @@
       <input type="hidden" name="categoryId" value="<?php echo $results['article']->category_id ?>"/>
       <input type="hidden" name="commenter_id" value="<?php echo $_SESSION['userid'] ?? "익명" ?>"/>
       <input type="hidden" name="reg_date" value="<?php echo date("Y-m-d H:i:s") ?>" />
-
-      <ul>
-        <li class = "comment-input-wrapper">
-          <textarea class="comment-input" name = "content" required maxlength="65535" 
-          placeholder="인터넷은 우리가 함께 만들어가는 소중한 공간입니다. 댓글 작성 시 타인에 대한 배려와 책임을 다해주세요." ></textarea>
-        </li>
-      </ul>
+      <fieldset><ul><li class = "comment-input-wrapper">
+        <textarea class="comment-input" name = "content" required maxlength="65535" 
+        placeholder="인터넷은 우리가 함께 만들어가는 소중한 공간입니다. 댓글 작성 시 타인에 대한 배려와 책임을 다해주세요." ></textarea>
+      </li></ul></fieldset>
 
       <input class = "comment-submit" type="submit" name="writeComment" value="등록" />
     </form>

@@ -83,7 +83,7 @@ function register() {
     alert("회원가입이 완료되었습니다. 가입한 계정으로 로그인 해주세요."); //TODO : 계정 인증절차(메일서버 구축)
     header("Location: session.php");
   } else {
-    require(TEMPLATE_PATH . "/registrationForm.php");
+    require(TEMPLATE_PATH . "/contents/registrationForm.php");
   }
 }
 

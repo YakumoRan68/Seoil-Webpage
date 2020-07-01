@@ -83,7 +83,6 @@
 }
 
 html { background: #334467; }
-
 body {
   width: 75%;
   margin: 20px auto;
@@ -97,8 +96,9 @@ h2 { font-size : 1.5em; }
 h3 { font-size : 1.17em; }
 p {	line-height: 180%; }
 caption { display: none; }
-button { color : black; }
+button, option, select { color : black; }
 a:hover { text-decoration: none; }
+fieldset { border : none; }
 a { 
 	text-decoration: none;
 	color: inherit;
@@ -108,166 +108,7 @@ a {
 
 :-ms-input-placeholder, ::-webkit-input-placeholder, ::-moz-placeholder {color: #a8a8a8;}
 
-
-/*********************************************************************************/
-/* Form Style                                                                    */
-/*********************************************************************************/
-/* 무슨 용도인지 모르겠습니다. 
-form label {
-	display: block;
-	text-align: left;
-	margin-bottom: 0.5em;
-}
-
-form .submit {
-	margin-top: 2em;
-	line-height: 1.5em;
-	font-size: 1.3em;
-}
-
-form input.g,
-form select,
-form textarea {
-	position: relative;
-	-webkit-appearance: none;
-	display: block;
-	border: 0;
-	background: #fff;
-	background: rgba(255,255,255,0.75);
-	width: 100%;
-	border-radius: 0.50em;
-	margin: 1em 0em;
-	padding: 1.50em 1em;
-	box-shadow: inset 0 0.1em 0.1em 0 rgba(0,0,0,0.05);
-	border: solid 1px rgba(0,0,0,0.15);
-	-moz-transition: all 0.35s ease-in-out;
-	-webkit-transition: all 0.35s ease-in-out;
-	-o-transition: all 0.35s ease-in-out;
-	-ms-transition: all 0.35s ease-in-out;
-	transition: all 0.35s ease-in-out;
-	font-size: 1em;
-	outline: none;
-}
-
-form input.text:focus,
-form select:focus,
-form textarea:focus
-{
-	box-shadow: 0 0 2px 1px #E0E0E0;
-	background: #fff;
-}
-
-form textarea
-{
-	min-height: 12em;
-}
-
-form .formerize-placeholder
-{
-	color: #555 !important;
-}
-
-form ::-webkit-input-placeholder
-{
-	color: #555 !important;
-}
-
-form :-moz-placeholder
-{
-	color: #555 !important;
-}
-
-form ::-moz-placeholder
-{
-	color: #555 !important;
-}
-
-form :-ms-input-placeholder
-{
-	color: #555 !important;
-}
-
-form ::-moz-focus-inner
-{
-	border: 0;
-}
-
-
-/*********************************************************************************/
-/* Image Style                                                                   */
-/*********************************************************************************/
-
-/* 
-
-	.image
-	{
-		display: inline-block;
-		border: 1px solid rgba(0,0,0,.1);
-	}
-	
-	.image img
-	{
-		display: block;
-		width: 100%;
-	}
-	
-	.image-full
-	{
-		display: block;
-		width: 100%;
-		margin: 0 0 3em 0;
-	}
-	
-	.image-left
-	{
-		float: left;
-		margin: 0 2em 2em 0;
-	}
-	
-	.image-centered
-	{
-		display: block;
-		margin: 0 0 2em 0;
-	}
-	
-	.image-centered img
-	{
-		margin: 0 auto;
-		width: auto;
-	}
-
-*/
-
-/*********************************************************************************/
-/* Button Style                                                                  */
-/*********************************************************************************/
-/*
-.button
-{
-	display: inline-block;
-	margin-top: 2em;
-	padding: 0.8em 2em;
-	background: #3E5A99;
-	line-height: 1.8em;
-	letter-spacing: 1px;
-	text-decoration: none;
-	font-size: 1em;
-	color: #FFF;
-}
-
-.button:before
-{
-	display: inline-block;
-	background: #8DCB89;
-	margin-right: 1em;
-	width: 40px;
-	height: 40px;
-	line-height: 40px;
-	border-radius: 20px;
-	text-align: center;
-	color: #272925;
-}
-
+.hidden { content : hidden; }
 
 /*********************************************************************************/
 /* 헤더 메뉴, 헤더 로고                                                            */
@@ -355,7 +196,7 @@ form ::-moz-focus-inner
 }
 
 /*********************************************************************************/
-/* img slide                                                                    */
+/* 이미지 슬라이드                                                                    */
 /*********************************************************************************/
 
 .header-slide-box {
@@ -398,6 +239,8 @@ form ::-moz-focus-inner
 	}
 }
 
+
+
 /*********************************************************************************/
 /* 프로필 박스; 로그인 박스 역할도 합니다.*/
 /*********************************************************************************/
@@ -407,7 +250,8 @@ form ::-moz-focus-inner
   float: right;
   border : 1px solid #fff;
   text-align : left;
-  padding : 3px 5px 3px 10px;
+	padding : 3px 5px 7px 10px;
+	overflow: hidden;
 }
 
 .profile-box a {
@@ -524,6 +368,121 @@ form ::-moz-focus-inner
 }
 
 /*********************************************************************************/
+/* 홈페이지                                                                       */
+/*********************************************************************************/
+
+.homepage-articles-wrapper {
+	width : 100%;
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:space-between;
+	align-content:flex-start;
+}
+
+.homepage-articles-box {
+	width : 49.5%;
+	border : 1px solid white;
+	margin-bottom : 0.5%;
+}
+
+.homepage-articles-name { border-bottom : 1.5px solid white; }
+
+.homepage-articles-list td { color: #C6C2C4; }
+.homepage-articles-list td:before { 
+	position : relative;
+	top : 4px;
+	content : "·";
+	font-size: 30px; 
+	line-height: 0px;
+	color: white; 
+	margin: 5px 5px 0 7px;
+}
+
+/*********************************************************************************/
+/* 게시글 목록                                                                  */
+/*********************************************************************************/	
+.article-list {
+	width: 100%;
+	border-top: 2px solid #ccc;
+}
+
+.article-list tr { border-bottom: 1px solid #ccc; }
+.article-list td { text-align: center; }
+.article-list th, .article-list td { 
+	padding: 10px;
+  font-size: 14px;
+}
+
+.create-article {
+	float : right;
+	margin : 20px 5px 0 0;
+}
+
+.article-navigation {
+	margin-top : 20px;
+	left : 3%;
+	position : relative;
+	display : flex;
+	flex-direction: column;
+	flex-wrap : wrap;
+	align-content : center;
+	align-items : center;
+}
+
+.article-paging { font-size: 0; }
+.article-paging a {
+	display: inline-block;
+	margin-left: 10px;
+	padding: 5px 10px;
+	border-radius: 100px;
+	font-size: 12px;
+}
+.article-paging a:first-child { margin-left: 0; }
+.article-paging a.page-move {
+	border: 1px solid #eee;
+	background: #eee;
+	color: #292929;
+}
+.article-paging a.num {
+	border: 1px solid #ccc;
+	font-weight: 600;
+	color:#ccc;
+}
+.article-paging a.num-now {
+	background:#ccc;
+	color: #fff;
+}
+
+.article-search {
+	width : 31em;
+	border: 1px solid #1ABC9C;
+	background: #FFFFFF;
+	margin-top: 10px;
+	display:flex;
+	justify-content: space-between;
+	height: 1.5em;
+}
+
+.article-search input {
+	font-size: 16px;
+	height: 1.5em;
+	width : 20em;
+	border:  1px solid black;
+	outline: none;
+}
+.article-search button {
+	width: 50px;
+	height: 1.5em;
+	border: 0;
+	background: #16A085;
+	outline: none;
+	color: #FFFFFF;
+}
+.article-search select[name="language"] {
+	height: 1.5em;
+}
+
+/*********************************************************************************/
 /* 게시글 */
 /*********************************************************************************/
 
@@ -546,7 +505,7 @@ form ::-moz-focus-inner
 }
 
 /*********************************************************************************/
-/* 댓글 */
+/* 댓글 및 댓글 작성 */
 /*********************************************************************************/
 
 .comment-wrapper {
@@ -618,391 +577,261 @@ form ::-moz-focus-inner
 }
 
 /*********************************************************************************/
-/* 게시판                                                                  */
-/*********************************************************************************/	
-.article-list {
-	width: 100%;
-	border-top: 2px solid #ccc;
-}
+/* 게시글 작성                                                             */
+/*********************************************************************************/
 
-.article-list tr { border-bottom: 1px solid #ccc; }
-.article-list td { text-align: center; }
-.article-list th, .article-list td { 
-	padding: 10px;
-  font-size: 14px;
-}
-
-.create-article {
-	float : right;
-	margin : 20px 5px 0 0;
-}
-
-.article-navigation {
-	margin-top : 20px;
-	left : 3%;
-	position : relative;
-	display : flex;
-	flex-direction: column;
-	flex-wrap : wrap;
-	align-content : center;
-	align-items : center;
-}
-
-.article-paging { font-size: 0; }
-.article-paging a {
-	display: inline-block;
-	margin-left: 10px;
-	padding: 5px 10px;
-	border-radius: 100px;
-	font-size: 12px;
-}
-.article-paging a:first-child { margin-left: 0; }
-.article-paging a.page-move {
-	border: 1px solid #eee;
-	background: #eee;
-	color: #292929;
-}
-.article-paging a.num {
-	border: 1px solid #ccc;
-	font-weight: 600;
-	color:#ccc;
-}
-.article-paging a.num-now {
-	background:#ccc;
-	color: #fff;
-}
-
-
-.article-search {
-	width : 31em;
-	border: 1px solid #1ABC9C;
-	background: #FFFFFF;
-	margin-top: 10px;
-	display:flex;
-	justify-content: space-between;
-	height: 1.5em;
-}
-
-.article-search input {
-	font-size: 16px;
-	height: 1.5em;
-	width : 20em;
-	border:  1px solid black;
-	outline: none;
-}
-.article-search button {
-	width: 50px;
-	height: 1.5em;
+.article-form input[type="text"],
+.article-form textarea {
 	border: 0;
-	background: #16A085;
-	outline: none;
-	color: #FFFFFF;
-}
-.article-search select[name="language"] {
-	height: 1.5em;
-}
-
-/*********************************************************************************/
-/* 홈페이지                                                                       */
-/*********************************************************************************/
-
-.homepage-articles-wrapper {
 	width : 100%;
-	display:flex;
-	flex-wrap:wrap;
-	justify-content:space-between;
-	align-content:flex-start;
+	background: #fff;
+	color : black;
+	background: rgba(255,255,255,0.75);
+	box-shadow: inset 0 0.1em 0.1em 0 rgba(0,0,0,0.05);
+	border: solid 1px rgba(0,0,0,0.15);
+	font-size: 1em;
+	outline: none;
+
+	-webkit-appearance: none;
+	transition: all 0.35s ease-in-out;
+	-moz-transition: all 0.35s ease-in-out;
+	-webkit-transition: all 0.35s ease-in-out;
+	-o-transition: all 0.35s ease-in-out;
+	-ms-transition: all 0.35s ease-in-out;
 }
 
-.homepage-articles-box {
-	width : 49.5%;
-	border : 1px solid white;
-	margin-bottom : 0.5%;
+.article-form input[type="text"]:focus,
+.article-form select:focus,
+.article-form textarea:focus {
+	box-shadow: 0 0 2px 1px #E0E0E0;
+	background: #fff;
 }
 
-.homepage-articles-name { border-bottom : 1.5px solid white; }
-
-.homepage-articles-list td { color: #C6C2C4; }
-.homepage-articles-list td:before { 
-	position : relative;
-	top : 4px;
-	content : "·";
-	font-size: 30px; 
-	line-height: 0px;
-	color: white; 
-	margin: 5px 5px 0 7px;
+.article-form label {
+	/*color : white;*/
+	line-height : 2em; /*라벨 밑 마진 크기*/
 }
 
-
-
-/*********************************************************************************/
-/* 게시글 작성 페이지                                                                    */
-/*********************************************************************************/
-.form-inline {
-	margin-bottom:10px;
+.article-form textarea {
+	height : 15em;
 }
 
-.form-name {
-	width:90px;
-	color: rgb(0, 0, 0);
+.article-form li {
+	margin-bottom : 10px;
 }
 
-.form-inline .form-control-use {
-	width:200px;
+.article-form input[type="submit"] {
+	color : black;
+	padding : 3px;
+	font-size : 0.8em;
 }
 
-.form-inline .form-control-textname {
-	width:400px;
+.article-form input[type="file"] {
+	font-size : 0.8em;
 }
 
-.form-inline .form-control-textcontent {
-	width:800px; 
-	resize:none;
-}
-
-.form-inline .file-select {
-	width:400px;
-}
-
-.make-content-btn {
-	margin-bottom:30px;
-}
-
-.make-btn-registration {
-	margin-right:10px; 
-	float:left;
-}
-
-.make-btn-primary {
-	float:right;
+.article-submit {
+	margin-top : 7px;
 }
 
 /*********************************************************************************/
-/* Social Icon Styles                                                            */
-/*********************************************************************************/
-
-	ul.contact
-	{
-		margin: 0;
-		padding: 2em 0em 0em 0em;
-		list-style: none;
-	}
-	
-	ul.contact li
-	{
-		display: inline-block;
-		padding: 0em 0.10em;
-		font-size: 1em;
-	}
-	
-	ul.contact li span
-	{
-		display: none;
-		margin: 0;
-		padding: 0;
-	}
-	
-	ul.contact li a
-	{
-		color: #FFF;
-	}
-	
-	ul.contact li a:before
-	{
-		display: inline-block;
-		background: #3E5A99;
-		width: 40px;
-		height: 40px;
-		line-height: 40px;
-		text-align: center;
-		color: rgba(255,255,255,.5);
-	}
-	
-
-
-/*********************************************************************************/
-/* Sign                                                                 */
+/* 회원가입                                                                */
 /*********************************************************************************/	
-.Sign-wrap {
-	margin-left: 80px;
-	margin-right: 400px;
-}
 
-.Sign-wrap h1 {
-	padding-bottom: 12px;
-    border-bottom: px solid white;
-    font-size: 32px;
-    letter-spacing: -2px;
-
-}
-
-.Sign-agreement {
+.registration-agreement-container {
 	color: #333;
-	line-height: 1.42;
+	line-height: 1.42em;
 	font-size: 13px;
 	margin: 0;
 	border: 1px solid #ddd;
 	padding: 15px 15px 10px 15px;
-	border-radius: 5px;
-	background: #f8f8f8;
+	background:rgba(255,255,255,0.95);
 	margin-bottom: 15px;
 }
-.Sign-text {
-	color: #333;
-	line-height: 1.42;
-	font-size: 13px;
-	margin: 0;
-	padding: 0;
-	max-height: 200px;
+.registration-agreement-content {
+	height: 15em;
 	overflow: auto;
 }
-
-.Sign-confirm {
+.registration-agreement-content * {
 	color: #333;
-	line-height: 1.42;
-	font-size: 13px;
-	padding: 10px 0 0 0;
-	margin: 10px 0 0 0;
-	border-top: 1px dotted #ccc;
+	font-size : .9em;
 }
-.Sign-control-group {
-	color: white;
-	font-family: Arial, sans-serif;
-	line-height: 1.42;
-	font-size: 20px;
-	margin: 0;
-	padding: 0;
-	margin-bottom: 30px;
+.registration-hr1 {
+	margin : 1em 0 1em 0;
+	border-top : 1px dotted #333;
+}
+.registration-agreement-confirm * {	color : black; }
 
-}
-.Sign-control-label ::before {
-	color: white;
-	font-family: Arial, sans-serif;
-    font-size: 20px;
-    line-height: 20px;
-    display: block;
-    margin-bottom: 5px;
-    float: left;
-    width: 160px;
-    padding-top: 5px;
-    text-align: right;
-}
-.Sign-controls ::after {
-	color: white;
-	font-family: Arial, sans-serif;
-    line-height: 1.42;
-    font-size: 13px;
-    margin: 0;
-    padding: 0;
-    margin-left: 180px;
-}
-.Sign-help-inline {
-    line-height: 1.42;
-    font-size: 13px;
-    padding: 0;
-    color: white;
-    margin: 0;
-    padding-left: 5px;
-    display: inline-block;
-    margin-bottom: 0;
-    vertical-align: middle;
+.registration input { color : black; }
+.registration input[type="submit"],
+.registration input[type="reset"] { padding : 2px; }
+
+.registration legend { 
+	font-size : 2em; 
+	font-weight : bold;
+	margin-bottom : 10px;
 }
 
-.Sign-btnArea {
-    color: #333;
-    line-height: 1.42;
-    font-size: 13px;
-    clear: both;
-    margin: 10px 0;
-    padding: 0;
-    text-align: right;
-    zoom: 1;
-    border-top: 1px solid #ccc;
-    padding-top: 10px;
+.registration tr {
+	height : 2.5em;
+	line-height : 2.5em;
 }
-.Sign-btn-pull-right {
-    margin: 0;
-    padding: 0 12px!important;
-    overflow: visible;
-    text-decoration: none!important;
-    line-height: 24px!important;
-    margin-right: .3em;
-    height: 26px!important;
-    -webkit-appearance: button;
-    font-weight: normal;
-    margin-left: 0;
-    font-size: 12px;
-    font-family: inherit;
-    text-align: center;
-    cursor: pointer;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-    color: #ffffff!important;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    background-color: #363636;
-    background-image: linear-gradient(to bottom, #444444, #222222);
-    background-repeat: repeat-x;
-    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    width: auto;
-    display: inline-block;
-    margin-bottom: 0;
-    vertical-align: middle;
+
+.registration-required {
+	color : red;
+	font-size: 1.2em;
+	padding : 0 1px;
 }
-.Sign-btn-pull-left {
-    margin: 0;
-    padding: 0 12px!important;
-    height: 24px!important;
-    overflow: visible;
-    text-decoration: none!important;
-    line-height: 24px!important;
-    margin-right: .3em;
-    font-size: 12px;
-    font-family: inherit;
-    display: inline-block;
-    margin-bottom: 0;
-    color: #333333;
-    text-align: center;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-    vertical-align: middle;
-    cursor: pointer;
-    background-color: #f5f5f5;
-    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
-    background-repeat: repeat-x;
-    border: 1px solid #cccccc;
-    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    border-bottom-color: #b3b3b3;
-    border-radius: 4px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+
+.registration-caption {
+	font-size : .8em;
+}
+
+.registration td:first-child {
+	width : 8em;
+}
+
+.registration-hr2 {
+	margin : 2em 0 1em 0;
+}
+
+.registration-submit {
+	float : right;
 }
 
 /*********************************************************************************/
-/* Wrapper                                                                       */
+/* Form Style                                                                    */
 /*********************************************************************************/
-/* 무슨용도죠? .wrapper 이렇게쓰면 css보고 어디에 쓰일지 어떻게압니까
-	.wrapper
+/* 무슨 용도인지 모르겠습니다. 
+form label {
+	display: block;
+	text-align: left;
+	margin-bottom: 0.5em;
+}
+
+form .submit {
+	margin-top: 2em;
+	line-height: 1.5em;
+	font-size: 1.3em;
+}
+
+form textarea
+{
+	min-height: 12em;
+}
+
+form .formerize-placeholder
+{
+	color: #555 !important;
+}
+
+form ::-webkit-input-placeholder
+{
+	color: #555 !important;
+}
+
+form :-moz-placeholder
+{
+	color: #555 !important;
+}
+
+form ::-moz-placeholder
+{
+	color: #555 !important;
+}
+
+form :-ms-input-placeholder
+{
+	color: #555 !important;
+}
+
+form ::-moz-focus-inner
+{
+	border: 0;
+}
+
+
+/*********************************************************************************/
+/* Image Style                                                                   */
+/*********************************************************************************/
+
+/* 
+
+	.image
 	{
-		overflow: hidden;
-		padding: 0em 0em 5em 0em;
+		display: inline-block;
+		border: 1px solid rgba(0,0,0,.1);
+	}
+	
+	.image img
+	{
+		display: block;
+		width: 100%;
+	}
+	
+	.image-full
+	{
+		display: block;
+		width: 100%;
+		margin: 0 0 3em 0;
+	}
+	
+	.image-left
+	{
+		float: left;
+		margin: 0 2em 2em 0;
+	}
+	
+	.image-centered
+	{
+		display: block;
+		margin: 0 0 2em 0;
+	}
+	
+	.image-centered img
+	{
+		margin: 0 auto;
+		width: auto;
 	}
 
-	#wrapper1
-	{
-		background: #FFF;
-	}
+*/
 
-	#wrapper2
-	{
-		overflow: hidden;
-		padding: 5em 0em;
-		text-align: center;
-	}
+/*********************************************************************************/
+/* Button Style                                                                  */
+/*********************************************************************************/
+/*
+.button
+{
+	display: inline-block;
+	margin-top: 2em;
+	padding: 0.8em 2em;
+	background: #3E5A99;
+	line-height: 1.8em;
+	letter-spacing: 1px;
+	text-decoration: none;
+	font-size: 1em;
+	color: #FFF;
+}
+
+.button:before
+{
+	display: inline-block;
+	background: #8DCB89;
+	margin-right: 1em;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 20px;
+	text-align: center;
+	color: #272925;
+}
+
 
 
 /*********************************************************************************/
 /* Sidebar                                                                       */
 /*********************************************************************************/
-
+/*
 	#sidebar
 	{
 		float: right;
@@ -1012,7 +841,7 @@ form ::-moz-focus-inner
 /*********************************************************************************/
 /* Newsletter                                                                    */
 /*********************************************************************************/
-
+/*
 	#newsletter
 	{
 		overflow: hidden;
@@ -1035,7 +864,7 @@ form ::-moz-focus-inner
 /*********************************************************************************/
 /* Portfolio                                                                     */
 /*********************************************************************************/
-
+/*
 	
 	#portfolio .box
 	{
@@ -1084,7 +913,7 @@ form ::-moz-focus-inner
 /*********************************************************************************/
 /* Three Columns                                                                 */
 /*********************************************************************************/
-
+/*
 	#three-column
 	{
 		overflow: hidden;
@@ -1185,6 +1014,50 @@ form ::-moz-focus-inner
 		color: #FFFFFF;
 	}
 	
+
+/*********************************************************************************/
+/* Social Icon Styles                                                            */
+/*********************************************************************************/
+/*
+	ul.contact
+	{
+		margin: 0;
+		padding: 2em 0em 0em 0em;
+		list-style: none;
+	}
+	
+	ul.contact li
+	{
+		display: inline-block;
+		padding: 0em 0.10em;
+		font-size: 1em;
+	}
+	
+	ul.contact li span
+	{
+		display: none;
+		margin: 0;
+		padding: 0;
+	}
+	
+	ul.contact li a
+	{
+		color: #FFF;
+	}
+	
+	ul.contact li a:before
+	{
+		display: inline-block;
+		background: #3E5A99;
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		color: rgba(255,255,255,.5);
+	}
+	
+
+
 /*********************************************************************************/
 /* 푸터(가능하면 css 파일 맨밑에 둬주세요)                                          */
 /*********************************************************************************/
@@ -1194,10 +1067,6 @@ form ::-moz-focus-inner
 	padding: 5em 0em;
 	border-top: 1px solid rgba(255,255,255,0.08);
 	text-align: center;
-}
-
-#footer .title span {
-	color: rgba(255,255,255,0.4);
 }
 
 #footer p {
@@ -1211,34 +1080,15 @@ form ::-moz-focus-inner
 	color: rgba(255,255,255,0.8);
 }
 
-ul.footer-contact {
+#footer .footer-copyright {
+	color : rgba(255,255,255,.5);
+}
+
+.footer-contact li { display: inline-block; }
+.footer-contact img {	background-color: rgba(255, 255, 255, 0.75); }
+.footer-contact {
   margin: 0;
   padding: 2em 0em 0em 0em;
-  list-style: none;
+	list-style: none;
 }
 	
-ul.footer-contact li {
-  display: inline-block;
-  padding: 0em 0.10em;
-  font-size: 1em;
-}
-
-ul.footer-contact li span {
-  display: none;
-  margin: 0;
-  padding: 0;
-}
-
-ul.footer-contact li a {
-  color: #FFF;
-}
-
-ul.footer-contact li a:before {
-  display: inline-block;
-  background: #3E5A99;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  color: rgba(255,255,255,.5);
-}

@@ -71,7 +71,7 @@
 						</table>
 					<?php else : ?>
 						<h2>서일 로그인</h2>
-						<form action="session.php?action=login" method="post">
+						<form action="session.php?action=login" method="post"><fieldset>
 							<input type="hidden" name="login" value="true" />
 							<div class="loginBox">
 								<input type="text" name="userid" required onkeyup="this.setAttribute('value', this.value);"  value="" placeholder="아이디">
@@ -80,7 +80,7 @@
 								<input type="password" name="userpw" required onkeyup="this.setAttribute('value', this.value);" value="" placeholder="비밀번호">
 							</div>
 							<input type="submit" name="login" value="로그인">
-						</form>
+						</fieldset></form>
 						<a href="#">아이디/비밀번호 찾기</a> <a href="session.php?action=register">회원가입</a>
 					<?php endif ?>
 				</div>
