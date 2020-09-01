@@ -8,7 +8,7 @@
 
 <form class = "article-form" action="session.php?action=<?php echo $results['formAction']?>" method="post">
   <input type="hidden" name="articleId" value="<?php echo $results['article']->article_id ?>"/>
-  <input type="hidden" name="categoryId" value="<?php echo $results['article']->category_id ?>"/>
+  <input type="hidden" name="categoryId" value="<?php echo $results['article']->category_id ?? $_GET['categoryId']?>"/>
 
 <?php if (isset($results['errorMessage'])) { ?>
   <div class="errorMessage"><?php echo $results['errorMessage'] ?></div>
@@ -29,8 +29,8 @@
       </li><hr>
       
       <li hidden>
-        <label for="pub_date">작성예약일</label>
-        <input type="datetime" name="pub_date" id="pub_date" placeholder=<?php echo preg_replace("/ /", "&nbsp;", date("Y-m-d H:i:s"))?> maxlength="19" value="<?php echo $results['article']->pub_date ? date("Y-m-d H:i:s", $results['article']->pub_date): "" ?>" />
+        <label hidden for="pub_date">작성예약일</label>
+        <input type="hidden" name="pub_date" id="pub_date" placeholder=<?php echo preg_replace("/ /", "&nbsp;", date("Y-m-d H:i:s"))?> maxlength="19" value="<?php echo $results['article']->pub_date ? date("Y-m-d H:i:s", $results['article']->pub_date): "" ?>" />
       </li>
     </ul>
 

@@ -225,17 +225,17 @@ a {
 
 @media screen { 
 	@keyframes slide {
-	  0% {margin-left:0;} /* 0 ~ 10  : 정지 */
-	  10% {margin-left:0;} /* 10 ~ 20 : 변이 */
+	  0% {margin-left:100%;} /* 0 ~ 10  : 정지 */
+	  10% {margin-left:100;} /* 10 ~ 20 : 변이 */
 	  20% {margin-left:-100%;} /* 20 ~ 30 : 정지 */
 	  30% {margin-left:-100%;} /* 30 ~ 40 : 변이 */
-	  40% {margin-left:-200%;}
-	  50% {margin-left:-200%;}
-	  60% {margin-left:-300%;}
-	  70% {margin-left:-300%;}
-	  80% {margin-left:-400%;}
-	  90% {margin-left:-400%;}
-	  100% {margin-left:0;}
+	  40% {margin-left:-300%;}
+	  50% {margin-left:-300%;}
+	  60% {margin-left:-500%;}
+	  70% {margin-left:-500%;}
+	  80% {margin-left:-500%;}
+	  90% {margin-left:-500%;}
+	  100% {margin-left:100%;}
 	}
 }
 

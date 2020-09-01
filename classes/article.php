@@ -90,18 +90,17 @@ class Article {
   }
 
   public function insert($category_id) {
-    if (!is_null($this->article_id)) error_page("wrongUID");
-
     $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-    $sql = "INSERT INTO articles (title, content, pub_date, author_id) VALUES (:title, :content, :pub_date, :author_id)";
+    $sql = "INSERT INTO articles (title, content, pub_date, author_id, category_id) VALUES (:title, :content, :pub_date, :author_id, :category_id)";
     $st = $conn->prepare($sql);
     $st->bindValue(":title", $this->title, PDO::PARAM_STR);
     $st->bindValue(":pub_date", $this->pub_date, PDO::PARAM_INT);
     $st->bindValue(":content", $this->content, PDO::PARAM_STR);
     $st->bindValue(":author_id", $_SESSION['userid'], PDO::PARAM_STR); //익명게시판 구현때 확인하기
     $st->bindValue(":category_id", $category_id, PDO::PARAM_STR);
-    $st->execute();
+    
     $this->article_id = $conn->lastInsertId();
+    $st->execute();
 
     $conn = null;
   }

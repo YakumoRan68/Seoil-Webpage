@@ -10,6 +10,10 @@
   <h1><?php echo getCategoryName($_GET['location'])[1] ?></h1>
 </div>
 
+<?php 
+  $category_id = getCategoryKey($_GET['location']);
+?>
+
 <table class = "article-list">
   <thead><tr>
     <th>글 번호</th>
@@ -18,7 +22,7 @@
     <th>작성일</th>
     <th>분류</th>
     <th>조회수</th>
-  </thead></tr>
+  </tr></thead>
 <tbody>
 <?php foreach ($results['articles'] as $article) { ?>
   <tr onclick="location='session.php?action=viewArticle&amp;categoryId=<?php echo $article->category_id.'&amp;articleId='.$article->article_id ?>'">
@@ -33,8 +37,8 @@
 </tbody>
 </table>
 
-<?php if(canWriteArticle((int)$article->category_id)) : ?>
-  <button class="create-article" onClick="location='session.php?action=newArticle&amp;categoryId=<?php echo $article->category_id.'&amp;articleId='.$article->article_id?>'">글 작성</button>
+<?php if(canWriteArticle($category_id)) : ?>
+  <a class="create-article" onClick="location='session.php?action=newArticle&amp;categoryId=<?php echo $category_id?>'">글 작성</a>
 <?php endif ?>
 
 <div class = "article-navigation">

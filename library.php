@@ -37,13 +37,21 @@
     return isset($_SESSION['userid']) && ($_SESSION['userid'] == $userid || $_SESSION['userid'] == ADMIN_USERNAME);
   }
 
-  function canWriteArticle($cnum) {
-    return true;
+  function canWriteArticle($arg) {
+    $cnum = getCategoryKey($arg);
+    return true; #임시
     if(isset($_SESSION['userid'])) return ((pageMetadata()[$cnum]['adminArticle'] ?? false) && $_SESSION['userid'] == 'admin') ;
     return pageMetadata()[$cnum]['allowAnnonymousArticle'] ?? false;
   }
 
   function tab() { #tab 리터럴 문자 반환
     return '<span class="tab">&#9;</span>';
+  }
+
+  function addOrUpdateUrlParam($name, $value) {
+    $params = $_GET;
+    unset($params[$name]);
+    $params[$name] = $value;
+    return basename($_SERVER['PHP_SELF']).'?'.http_build_query($params);
   }
 ?>

@@ -27,5 +27,5 @@
     #'adminArticle', 'adminAccess'
   ));
 
-  define('ARTICLES_LOAD_FOR_HOMEPAGE', array('test', 'testpage', 'test', 'test', 'test', 'test'));
+  define('ARTICLES_LOAD_FOR_HOMEPAGE', array('community_free', 'test', 'lost_report', 'found_report', 'major_lecture', 'general_lecture'));
 ?>

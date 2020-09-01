@@ -29,6 +29,7 @@ function login() {
 
       if ($userid == ADMIN_USERNAME && $password == ADMIN_PASSWORD) {
         $_SESSION['userid'] = ADMIN_USERNAME;
+        $_SESSION['username'] = ADMIN_USERNAME;
         header("Location: session.php");
       } else {
         $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
@@ -135,8 +136,11 @@ function newArticle() {
   if (isset($_POST['saveChanges'])) {
     $article = new Article;
     $article->storeFormValues($_POST);
-    $article->insert($_GET['categoryId']);
-    goPage(array("status"=>"changesSaved", "location"=>getFileName($_GET['categoryId'])));
+    foreach($_POST as $k => $v) {
+      error_log($k.",".$v);
+    }
+    $article->insert($_POST['categoryId']);
+    goPage(array("status"=>"changesSaved", "location"=>getFileName($_POST['categoryId'])));
   } elseif (isset($_POST['cancel'])) {
     goPage(array("location"=>getFileName($_POST['categoryId'])));
   } else {
