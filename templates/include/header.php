@@ -11,39 +11,39 @@
 			<a class="logo" href="." ><img src="images/logoSeoil.png" alt="서뮤니티 로고"/><!--이미지에는 꼭 alt 태그 넣으세요.--></a>
 			<nav class="header-menu"> 
 				<ul> <!--원래 클래스 이름 "nav"였음. 시멘틱 태그를 클래스이름 그대로 쓰지 마세요. 해당 ul을 지칭하는것은 .header-menu > ul 로 할 것.-->
-					<li><a href="#" accesskey="2" title="">커뮤니티</a>
+					<li><a href="session.php?location=community_free" accesskey="2">커뮤니티</a>
 						<ul>
-							<li><a href="# ">자유게시판</a></li>
-							<li><a href="# ">익명게시판</a></li>
-							<li><a href="# ">새내기게시판</a></li>
-							<li><a href="# ">졸업생게시판</a></li>
+							<li><a href="session.php?location=community_free">자유게시판</a></li>
+							<li><a href="session.php?location=community_anonymous">익명게시판</a></li>
+							<li><a href="session.php?location=community_newcomers">새내기게시판</a></li>
+							<li><a href="session.php?location=community_graduates">졸업생게시판</a></li>
 						</ul>
 					</li>
-					<li><a href="#" accesskey="3" title="">강의정보</a>
+					<li><a href="session.php?location=major_lecture" accesskey="3">강의정보</a>
 						<ul>
-							<li><a href="# ">전공강의정보</a></li>
-							<li><a href="# ">교양강의정보</a></li>
-							<li><a href="# ">교양강의자료</a></li>
+							<li><a href="session.php?location=major_lecture">전공강의정보</a></li>
+							<li><a href="session.php?location=general_lecture">교양강의정보</a></li>
+							<li><a href="session.php?location=lecture_materials">교양강의자료</a></li>
 						</ul>
 					</li>
-					<li><a href="#" accesskey="4" title="">분실물</a>
+					<li><a href="session.php?location=lost_report" accesskey="4">분실물</a>
 						<ul>
-							<li><a href="# ">분실신고</a></li>
-							<li><a href="# ">습득물</a></li>
+							<li><a href="session.php?location=lost_report">분실신고</a></li>
+							<li><a href="session.php?location=found_report">습득물</a></li>
 						</ul>
 					</li>
-					<li><a href="#" accesskey="5" title="">공지사항</a>
+					<li><a href="session.php?location=school_news" accesskey="5">공지사항</a>
 						<ul>
-							<li><a href="# ">학교소식</a></li>
-							<li><a href="# ">학생소식</a></li>
-							<li><a href="# ">서일동아리</a></li>
+							<li><a href="session.php?location=school_news">학교소식</a></li>
+							<li><a href="session.php?location=student_news">학생소식</a></li>
+							<li><a href="session.php?location=seoil_circle">서일동아리</a></li>
 						</ul>
 					</li>
-					<li><a href="#" accesskey="6" title="">운영센터</a>
+					<li><a href="session.php?location=support" accesskey="6">운영센터</a>
 						<ul>
-							<li><a href="# ">업데이트 공지</a></li>
-							<li><a href="# ">게시판 신설건의</a></li>
-							<li><a href="# ">문의사항</a></li>
+							<li><a href="session.php?location=update_notice">업데이트 공지</a></li>
+							<li><a href="session.php?location=article_support">게시판 신설건의</a></li>
+							<li><a href="session.php?location=support">문의사항</a></li>
 						</ul>
 					</li>
 				</ul>

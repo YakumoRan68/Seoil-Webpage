@@ -3,8 +3,8 @@
 
 <footer> <!-- 시멘틱 태그 -->
   <div id="footer">
-    <p><a href="#">HOME</a> | <a href="http://fotogrph.com/">서일소개</a> | <a href="http://templated.co" rel="nofollow">이용문의</a> | 
-      <a href="#">개인정보정책</a> | <a href="http://templated.co" rel="nofollow">이용약관</a><br>
+    <p><a href="#">HOME</a> | <a href="session.php?location=about">서일소개</a> | <a href="session.php?location=contactus" rel="nofollow">이용문의</a> | 
+      <a href="session.php?privacy_policy">개인정보정책</a> | <a href="session.php?location=terms_of_service" rel="nofollow">이용약관</a><br>
       <span class = "footer-copyright">&copy;copyright by seoil.com All rights reserved</span>
       <ul class="footer-contact">
         <li><a href="#"><img src = "images/footer/트위터.png"></img></a></li>

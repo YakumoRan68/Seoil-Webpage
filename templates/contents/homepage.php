@@ -11,7 +11,7 @@
 
       <div class = "homepage-articles-box">
         <div class = "homepage-articles-name">
-          <a href = "http://localhost/session.php?location=<?php echo $location_name?>" >
+          <a href = "session.php?location=<?php echo $location_name?>" >
             <h2><?php echo $articles_name ?></h2>
           </a>
         </div>

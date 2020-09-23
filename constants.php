@@ -14,7 +14,7 @@
     array('major_lecture', '전공강의정보', 'loadArticles' => true),
     array('general_lecture', '교양강의정보', 'loadArticles' => true),
     array('lecture_materials', '강의자료', 'loadArticles' => true),
-    array('community_free', '자유게시판', 'loadArticles' => true),
+    array('community_free', '자유게시판', 'loadArticles' => true, 'loadComments' => true, 'allowAnnonymousArticle' => true, 'allowAnnonymousComment' => true),
     array('community_anonymous', '익명게시판', 'loadArticles' => true),
     array('community_newcomers', '새내기게시판', 'loadArticles' => true),
     array('community_graduates', '졸업생게시판', 'loadArticles' => true),
@@ -27,5 +27,5 @@
     #'adminArticle', 'adminAccess'
   ));
 
-  define('ARTICLES_LOAD_FOR_HOMEPAGE', array('community_free', 'test', 'lost_report', 'found_report', 'major_lecture', 'general_lecture'));
+  define('ARTICLES_LOAD_FOR_HOMEPAGE', array('community_free', 'seoil_circle', 'lost_report', 'found_report', 'major_lecture', 'general_lecture'));
 ?>
